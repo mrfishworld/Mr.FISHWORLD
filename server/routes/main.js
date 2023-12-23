@@ -2,6 +2,13 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const multer  = require('multer');
+const storage = multer.memoryStorage();
+
+const upload = multer({
+  storage: storage,
+  // Other Multer configuration options...
+});
 
 router.get('', async (req, res) => {
   try {
