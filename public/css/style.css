@@ -1400,6 +1400,14 @@ body {
 
 @media (max-width:414px) {
 
+  .hero .overlay h1 {
+    font-size: 2.5remrem;
+  }
+  
+  .hero .overlay p {
+    font-size: 1.2rem;
+  }
+
   .certificate {
     top: -25%;
   }
