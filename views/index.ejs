@@ -1,0 +1,291 @@
+<div class="modal" id="modal">
+  <div class="form-container">
+    <span class="close-btn" onclick="closeForm()">&times;</span>
+    <form id="lessonForm" action="/send-email" method="post">
+      <h3>Please provide your information to help us understand you better.</h3>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="lessonTime">Interested in:</label>
+      <select>
+        <option value="en-us" selected>Swimming Lesson for a kid</option>
+        <option value="fr">Swimming Lesson for an adult</option>
+        <option value="fr">Medical Swimming Therapy</option>
+        <option value="fr">Swimming Equipment</option>
+      </select>
+
+      <label for="lessonTime">Preferred Lesson Time:</label>
+      <input type="text" id="lessonTime" name="lessonTime" required>
+
+      <label for="location">Preferred Training Location:</label>
+      <input type="text" id="location" name="location" required>
+
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <img src="Img/home.jpg" alt="">
+  <div class="overlay">
+    <h1>Mr.FISHWORLD</h1>
+    <p>Swimming Lessons, Swimming Equipments and Medical Swimming Therapies.</p>
+    <button class="btn-blue"><a href="#lessons">Browse Lessons</a></button>
+  </div>
+</div>
+
+<div class="loop">
+  <span>Water is Life. Live life</span>
+</div>
+
+<div class="crash-course" id="lessons">
+  <div class="crash-course-header">
+    <h2>Learn how to swim. Whether old or young.</h2>
+    <p>BrainStation coding bootcamps are 400-hour, project-based programs that have helped thousands of bootcamp students launch new careers in the tech industry.</p>
+  </div>
+  <div class="course-container">
+    <div class="course">
+      <i class='bx bx-swim'></i>
+      <div class="info">
+        <h3>Swimming Lessons for Adults</h3>
+        <button class="trans" onclick="openForm()"><a href="#">Join Lesson</a></button>
+      </div>
+    </div>
+    <div class="course">
+      <i class='bx bx-swim'></i>
+      <div class="info">
+        <h3>Swimming Lessons for Kids</h3>
+        <button class="trans" onclick="openForm()"><a href="#">Join Lesson</a></button>
+      </div>
+    </div>
+    <div class="course">
+      <i class='bx bx-swim'></i>
+      <div class="info">
+        <h3>Medical Swimming Therapy</h3>
+        <button class="trans" onclick="openForm()"><a href="#">Join Therapy</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="training-stories">
+
+  <div class="certificate">
+    <img src="/Img/fina-coaches.jpg"  alt="Fina Coaches Programme">
+    <img src="/Img/swim-safe-ug.jfif" alt="Swim Safe Uganda">
+    <img src="/Img/life-saving-assoc-ug.jpg" alt="Life Saving Association Uganda">
+    <img src="/Img/nile-voc-ins.png" alt="Nile Vocational Institute">
+  </div>
+  <!-- Video Loop -->
+  <div class="video-loop">
+      <!-- Add your looped video source here -->
+      <video autoplay loop muted>
+        <source src="/video/swim-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay with Text and Play Button -->
+    <div class="overlay-background"></div>
+    <div class="overlay">
+        <h1>Trainee Stories</h1>
+        <button class="play-button" onclick="openVideoPlayer()">&#9654; Play</button>
+    </div>
+  </div>
+
+  <!-- Carousel for Trained People -->
+    <div class="people-carousel">
+      <h2>More Trainee Stories</h2>
+      <div class="carousel">
+          <!-- Carousel content goes here -->
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <!-- Person 1 -->
+              <img src="/Img/home.jpg" alt="Person 1">
+              <div class="info">
+                <h3>Mis Immeria</h3>
+                <p>Trained in: 2023</p>
+                <button class="trans"><a href="#">Read Story</a></button>
+              </div>
+          </div>
+
+          <!-- Add more carousel items for additional trained people -->
+    </div>
+
+    <div class="video-player-container" id="videoPlayerContainer">
+      <!-- Video Player -->
+      <video controls autoplay loop muted class="video-player" controls controlslist="nodownload nofullscreen noremoteplayback">
+          <source src="/video/swim-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <!-- Close Button -->
+      <span class="close-button" onclick="closeVideoPlayer()">&times;</span>
+    </div>
+  
+</div>
+</section>
+
+<section class="contact-info">
+
+<div class="numbers">
+  <div class="info">
+    <h1>100+</h1>
+    <p>People Trained</p>
+  </div>
+  <div class="info">
+    <h1>3</h1>
+    <p>Years in this Proffession</p>
+  </div>
+</div> 
+
+<div class="info">
+  <h2>Picked an insterest in any of Mr Fish world's Swimming Lessons or Confused about anything? </h2>
+  <div class="contact-btns">
+    <button class="trans contact-btn"><a href="tel:+256705164400">Contact Mr Fish World</a></button>
+  </div>
+</div>
+</section>
+
+<section class="equip">
+
+<div class="equip-header">
+  <h2>Need Supply for Good Quality Swimming Equipment?</h2>
+  <p>BrainStation coding bootcamps are 400-hour, project-based programs that have helped thousands of bootcamp students launch new careers in the tech industry.</p>
+</div>
+<div class="equip-container">
+  <div class="equip-item">
+    <div class="img">
+      <img src="/Img/swimming-equipment.webp" alt="Swimming equipments">
+    </div>
+    <div class="info">
+      <h3>All proffessional swimming gear</h3>
+      <button class="trans"><a href="tel:+256705164400">Call to Order</a></button>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="venue">
+
+<div class="venue-header">
+  <h2>Learn from the comfort of your own swimming pool or any other swimming pool</h2>
+  <p>BrainStation coding bootcamps are 400-hour, project-based programs that have helped thousands of bootcamp students launch new careers in the tech industry.</p>
+</div>
+<div class="venue-container">
+  <div class="venue-item">
+    <div class="img">
+      <img src="/Img/s-pool.png" alt="Mr Fish World Swimming pool">
+    </div>
+    <div class="info">
+      <h3>Najeera Swimming pool</h3>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptas vitae nobis. Laborum, beatae quas sed illo enim atque et Laborum, beatae quas sed illo enim atque et.</p>
+      <button class="trans"><a href="#">View Najeera Swimming pool</a></button>
+    </div>
+  </div>
+</div>
+</section>
+<section class="review">
+<div class="review-slider">
+  <h2>What people say</h2>
+  <div class="slider">
+      <!-- Carousel content goes here -->
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+      <div class="slider-item">
+          <div class="info">
+            <i class='bx bx-user-circle'></i>
+            <h3>Imeria jane</h3>
+          </div>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, ipsam. Eveniet, beatae.</p>
+      </div>
+     
+
+      <!-- Add more carousel items for additional trained people -->
+</div>
+</section>

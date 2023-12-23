@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <meta name="description" content="<%= locals.description %>">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="/css/floating-wpp.min.css">
+    <script src="/js/floating-wpp.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <%- include('../partials/header.ejs')  %>
+        
+        <main class="main">
+            <%- body %>
+
+        </main>
+       
+
+        <%- include('../partials/footer.ejs')  %>
+    </div>
+
+    <div class="social-buttons">
+        <a href="https://www.facebook.com/asio.noah" target="_blank" class="social-button facebook">
+            <i class="bx bxl-facebook"></i>
+        </a>
+        <a href="https://twitter.com/asizynoah" target="_blank" class="social-button twitter">
+            <i class="bx bxl-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/asiomizu-noah-19b91127a" target="_blank" class="social-button linkedin">
+            <i class="bx bxl-linkedin"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCPr4eONoW3N1JmlwC82buzA" target="_blank" class="social-button youtube">
+            <i class="bx bxl-youtube"></i>
+        </a>
+    </div>
+
+    <!-- whatsap button -->
+    <div class="venom-button" id="myButton">
+
+
+
+    </div>
+
+    <div class="floating-wpp"></div>
+   
+    
+    
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://kit.fontawesome.com/92ebb82932.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" defer src="/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+
+        $(function () {
+        $('.floating-wpp').floatingWhatsApp({
+            phone: '+256740384876',
+            popupMessage: 'Hello! How can I help you?',
+            showPopup: true,
+            message: 'Type message here',
+            headerTitle: 'Whatsapp chat with Noah',
+            backgroundColor:'#25D366',
+            headerColor:'rgb(50, 47, 241)',
+            position:'right',
+
+
+        });
+        });
+        </script>
+
+</body>
+</html>
