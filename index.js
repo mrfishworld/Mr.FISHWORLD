@@ -16,7 +16,6 @@ const session = require('express-session');
 
 const app = express();
 const PORT = 5050 || process.env.PORT;
-const hostname ='0.0.0.0'
 
 //connect to DB
 /* connectDB(); */ 
@@ -28,6 +27,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use(session({
+    secret: 'keyboardcat',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI
+    }),
+}));
 
 app.use(express.static('public'));
 app.use(flash());
