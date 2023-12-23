@@ -229,9 +229,9 @@ body {
 
 .hero .overlay {
   position: absolute;
+  width: 80%;
   top: 35%;
-  left: 0%;
-  padding: 0 10%;
+  left: 10%;
 }
 
 .hero .overlay h1 {
