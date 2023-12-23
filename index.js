@@ -6,16 +6,13 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const flash = require('express-flash');
-const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
 const favicon = require('serve-favicon');
 const path = require('path');
 
-const connectDB = require('./server/config/db');
+
+
 const session = require('express-session');
-const { isActiveRoute } = require('./server/helpers/routeHelpers');
 
 const app = express();
 const PORT = 5050 || process.env.PORT;
@@ -32,15 +29,6 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(session({
-    secret: 'keyboardcat',
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI
-    }),
-}));
-
 app.use(express.static('public'));
 app.use(flash());
 
@@ -48,8 +36,6 @@ app.use(flash());
 app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
-
-app.locals.isActiveRoute = isActiveRoute;
 
 app.use('/', require('./server/routes/main'));
 
