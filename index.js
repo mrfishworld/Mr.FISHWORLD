@@ -14,14 +14,12 @@ const path = require('path');
 
 const connectDB = require('./server/config/db');
 const session = require('express-session');
-const { isActiveRoute } = require('./server/helpers/routeHelpers');
 
 const app = express();
 const PORT = 5050 || process.env.PORT;
-const hostname ='0.0.0.0'
 
 //connect to DB
-/* connectDB(); */ 
+connectDB();  
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -47,8 +45,6 @@ app.use(flash());
 app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
-
-app.locals.isActiveRoute = isActiveRoute;
 
 app.use('/', require('./server/routes/main'));
 
