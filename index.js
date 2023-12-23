@@ -5,7 +5,6 @@ const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
-const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const path = require('path');
@@ -39,7 +38,6 @@ app.use(session({
 }));
 
 app.use(express.static('public'));
-app.use(flash());
 
 //TEMPLATING ENGINE
 app.use(expressLayout);
