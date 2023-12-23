@@ -58,7 +58,6 @@ router.post('/send-email', async (req, res) => {
     try {
         // Send the email
         await transporter.sendMail(mailOptions);
-        req.flash('success', 'Email sent successfully');
         res.redirect('/');
     } catch (error) {
         console.error(error);
