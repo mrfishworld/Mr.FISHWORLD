@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --MAIN-COLOR:#1DA1F2 ;
+  --HEADER-FOOTER: #1F51FF;
+}
+
 html {
   scroll-behavior: smooth;
   width: 100%;
@@ -76,7 +81,7 @@ body {
 }
 
 .main-header.scrolled {
-  background: #1DA1F2;
+  background: #1F51FF;
   top: 0;
 }
 
@@ -131,7 +136,7 @@ body {
 }
 
 .btn-blue {
-  background: #1F51FF;
+  background: var(--MAIN-COLOR);
   border: none;
   padding: 0.5em 1em;
   margin: 1.4em 1em;
@@ -323,6 +328,7 @@ body {
   margin: 1em 0;
   text-align: center;
   padding-top: 1em;
+  color: var(--MAIN-COLOR);
 }
 
 .crash-course-header p {
@@ -353,10 +359,14 @@ body {
 
 .crash-course .course-container .course i {
   font-size: 5rem;
+  color: var(--MAIN-COLOR);
 }
 
 .crash-course .course-container .course .info {
   padding: 1em 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .crash-course .course-container .course .info h3 {
@@ -370,21 +380,21 @@ body {
 .trans {
   background: transparent;
   padding: 1em 2em;
-  border: 1px solid #1F51FF;
+  border: 1px solid var(--MAIN-COLOR);
   border-radius: 2px;
   margin-top: 1em;
   transition: all 0.3s ease;
 }
 
 .trans:hover {
-  background: #1F51FF;;
+  background: var(--MAIN-COLOR);;
 }
 
 .trans a {
   text-decoration: none;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
-  color: #1F51FF;
+  color: var(--MAIN-COLOR);
   transition: all 0.3s ease;
   display: block;
 }
@@ -398,8 +408,8 @@ body {
   position: relative;
   width: 100%;
   background-position: center center;
-  background-color: #1F51FF;
-  z-index: -2;
+  background-color: var(--MAIN-COLOR);
+  z-index: 1;
 }
 
 .equip::before {
@@ -408,7 +418,6 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   z-index: -1;
   background-image: url('/Img/crash-courses.jpg'); /* Replace with your background image path */
   background-size: cover; /* Adjust as needed */
@@ -445,7 +454,6 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
-  z-index: 1;
 }
 
 .equip .equip-container .equip-item {
@@ -493,24 +501,23 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.equip .trans {
-  background: #1F51FF;
-}
-
-.equip .trans a {
-  color: #fff;
-}
-
-.equip .trans:hover {
-  background: #5b7aec;
-}
-
 /* student stories */
 .training-stories {
   position: relative;
   width: 100%;
-  background: #1F51FF;
+  background: var(--MAIN-COLOR);
   padding: 13em 0;
+  z-index: 6;
+}
+
+.wave-d{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/Img/wave-2.png');
+  background-size: 1000px 100px;
 }
 
 /* Certificate */
@@ -539,7 +546,8 @@ body {
   margin: 0 5%;
   overflow: hidden;
   position: relative;
-  background: #1F51FF;
+  background: var(--MAIN-COLOR);
+  z-index: 10;
 }
 
 .video-loop video {
@@ -622,12 +630,14 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 10;
 }
 
 .people-carousel h2 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
+  align-items: center;
 }
 
 .people-carousel .next {
@@ -698,6 +708,7 @@ body {
   justify-content: space-around;
   width: 80%;
   border-radius: 3px;
+  z-index: 11;
 }
 
 .numbers .info {
@@ -749,7 +760,7 @@ body {
 }
 
 .trans.contact-btn {
-  background: #1F51FF;
+  background: var(--MAIN-COLOR);
 }
 
 .trans.contact-btn a {
@@ -757,7 +768,7 @@ body {
 }
 
 .trans.contact-btn a:hover {
-  color: #1F51FF;
+  color: var(--MAIN-COLOR);
 }
 
 .trans.contact-btn:hover {
@@ -786,6 +797,68 @@ body {
   mask-size: cover; /* Adjust as needed */
 }
 
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/Img/wave.png');
+  background-size: 1000px 100px;
+}
+
+.wave1 {
+  animation: animate 30s linear infinite;
+  opacity: 1;
+  z-index: -1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+.wave2 {
+  animation: animate2 15s linear infinite;
+  opacity: 0.5;
+  animation-delay: -5s;
+  z-index: -2;
+  bottom: 10px;
+}
+
+.wave3 {
+  animation: animate 30s linear infinite;
+  z-index: -3;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15;
+}
+
+.wave4 {
+  animation: animate2 5s linear infinite;
+  opacity: 0.7;
+  animation-delay: -5s;
+  z-index: -4;
+  bottom: 20px;
+}
+
+@keyframes animate{
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes animate2{
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
 .venue-header {
   display: flex;
   flex-flow: column;
@@ -808,7 +881,7 @@ body {
 }
 
 .venue-container {
-  margin: 2em 0;
+  margin: 2em 0 3em 0;
   width: 98%;
   scroll-snap-type: x mandatory;
 }
@@ -856,18 +929,6 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.trans {
-  background: #1F51FF;
-}
-
-.trans a {
-  color: #fff;
-}
-
-.trans:hover {
-  background: #5b7aec;
-}
-
 
 /* Review Slider */
 .review-slider {
@@ -880,7 +941,7 @@ body {
 }
 
 .review-slider h2 {
-  color: #000;
+  color: var(--MAIN-COLOR);
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   text-align: center;
@@ -919,6 +980,7 @@ body {
 .slider-item .info h3 {
   padding-bottom: 0.5em;
   font-family: 'Poppins', sans-serif;
+  color: var(--MAIN-COLOR);
 }
 
 .slider-item .info p {
@@ -932,7 +994,7 @@ body {
 
 
 .footer {
-  background: #1F51FF;
+  background: var(--HEADER-FOOTER);
   padding: 1em 10%;
   width: 100%;
 }
@@ -1030,7 +1092,7 @@ body {
   color: #1877F2;
 }
 .bxl-twitter {
-  color: #1DA1F2;
+  color: var(--MAIN-COLOR);
 }
 .bxl-youtube {
   color: #CD201F;
@@ -1078,7 +1140,7 @@ body {
 .about {
   width: 100%;
   padding: 12em 10%;
-  background: #1F51FF;
+  background: var(--HEADER-FOOTER);
   z-index: -1000;
 }
 
@@ -1262,7 +1324,7 @@ body {
     width: 100%;
     justify-content: space-between;
     border-bottom: 1px solid rgba(0, 0, 0, 0.473);
-    background: #1DA1F2;
+    background: var(--HEADER-FOOTER);
   }
 
   .main-nav {
@@ -1273,7 +1335,7 @@ body {
     text-align: center;
     width: 100%;
     height: 95vh;
-    background: #1DA1F2;
+    background: var(--HEADER-FOOTER);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   }
 
@@ -1329,6 +1391,10 @@ body {
     padding-top: 20em;
   }
 
+  .venue-header h2 {
+    color: #fff;
+  }
+
   .numbers {
     top: -40%;
   }
@@ -1367,12 +1433,21 @@ body {
   background-color: #fff;
 }
 
+.equip-header h2 {
+  color: var(--MAIN-COLOR);
+}
+
+.equip-header p {
+  color: #000;
+}
+
 .equip::before {
   display: none;
 }
 
 .venue {
-  background-color: #1F51FF;
+  background-color: var(--MAIN-COLOR);
+  z-index: -10;
 }
 
 .venue::before {
