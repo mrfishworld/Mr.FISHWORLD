@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
+  background-color: var(--MAIN-COLOR);
 }
 
 img {
@@ -296,6 +297,7 @@ body {
   position: relative;
   padding: 3em 10% 8em 10%;
   height: auto;
+  background: #fff;
   background-position: center center;
   z-index: 1;
 }
@@ -308,7 +310,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1000;
-  background-image: url('/Img/crash-courses.jpg'); /* Replace with your background image path */
+  background-image: linear-gradient(rgba(32, 32, 32, 0.404), rgba(22, 22, 22, 0.363)), url('/Img/crash-courses.jpg'); /* Replace with your background image path */
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   mask-image: url('/Img/mask-bg-img.png'); /* Replace with your mask image path */
@@ -410,6 +412,8 @@ body {
   background-position: center center;
   background-color: var(--MAIN-COLOR);
   z-index: 1;
+  margin-bottom: -3.2em;
+  margin-top: -2em;
 }
 
 .equip::before {
@@ -599,8 +603,9 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 87%;
   transform: translate(-50%, -50%);
-  z-index: 1000000; /* Ensure the video player is on top of the overlay and video */
+  z-index: 10000000000; /* Ensure the video player is on top of the overlay and video */
   display: none;
   padding: 0.5em;
   background: #d1d1d1;
@@ -790,7 +795,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1000;
-  background-image: url('/Img/crash-courses.jpg'); /* Replace with your background image path */
+  background-image: linear-gradient(rgba(15, 15, 15, 0.425), rgba(24, 24, 24, 0.404)), url('/Img/crash-courses.jpg'); /* Replace with your background image path */
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   mask-image: url('/Img/mask-bg-img.png'); /* Replace with your mask image path */
@@ -868,6 +873,7 @@ body {
 
 .venue-header h2 {
   font-size: 2rem;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
   margin: 1em 0;
   text-align: center;
@@ -932,6 +938,7 @@ body {
 
 /* Review Slider */
 .review-slider {
+  background: #fff;
   padding: 20px;
   margin-top: 3em;
   display: flex;
@@ -1387,6 +1394,16 @@ body {
   .hero .overlay p {
     font-size: 1.5rem;
   }
+
+  .loop {
+    height: 5em;
+  }
+
+  .loop span {
+    font-size: 1.5rem;
+    padding:1em 1.5em;
+  }
+
   .training-stories {
     padding-top: 20em;
   }
