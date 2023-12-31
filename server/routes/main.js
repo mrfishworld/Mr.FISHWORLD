@@ -139,6 +139,30 @@ router.get('/blogs', async (req, res) => {
   
 });
 
+/**
+ * GET /
+ * Shop
+*/
+router.get('/shop', async (req, res) => {
+
+  try {
+
+    const locals = {
+      title: 'Blogs',
+      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+    };
+
+    res.render('shop', {
+      locals
+    }); 
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+    res.status(500).json({ error: 'Third  server error' });
+  }
+  
+});
+
 
 
 module.exports = router;
