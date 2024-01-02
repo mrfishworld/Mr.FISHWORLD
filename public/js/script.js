@@ -81,7 +81,7 @@ const loopContainer = document.querySelector('.loop');
 
   /* carousel */
   $(document).ready(function(){
-    $('.carousel').slick({
+    $('.story-carousel').slick({
       
 centerMode: true,
 centerPadding: '60px',

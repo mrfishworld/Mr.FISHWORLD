@@ -148,7 +148,7 @@ router.get('/shop', async (req, res) => {
   try {
 
     const locals = {
-      title: 'Blogs',
+      title: 'Shop',
       description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
     };
 
