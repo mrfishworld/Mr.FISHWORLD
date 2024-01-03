@@ -1348,7 +1348,7 @@ body {
 }
 /* Blogs */
 .blog-wrapper {
-  margin: 10em 10% 0 10%;
+  margin: 2em 10% 0 10%;
   display: grid;
   grid-template-columns: 70% 30%;
 }
