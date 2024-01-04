@@ -1824,6 +1824,13 @@ form .input-box {
   }
 }
 
+@media (max-width:720px) {
+  .form-container {
+    min-width: 240px;
+    margin: auto 1em;
+  }
+}
+
 @media (max-width:550px) {
   .hero .overlay h1 {
     font-size: 2.3rem;
