@@ -51,8 +51,14 @@ router.post('/send-email', async (req, res) => {
     const mailOptions = {
         from: email,
         to: 'asiomizunoah@gmail.com',  // Your email
-        subject: 'Interested client from Mr.FISHWORLD',
-        text: `Email: ${email}\nMessage: ${message}`
+        subject: 'Enquiry Form from SWIMWORLD',
+        text: `
+            Name: ${formData.name}
+            Phone Number: ${formData.phone}
+            Email: ${formData.email}
+            Preferred Lesson Day: ${formData.lessonDay}
+            Preferred Lesson Time: ${formData.lessonTime}
+            Preferred Training Location: ${formData.location}`
     };
 
     try {
