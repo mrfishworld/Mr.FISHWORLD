@@ -186,21 +186,54 @@ responsive: [
     
   });
 
-  /* Overlay Form */
-  function openForm() {
-    document.getElementById("modal").style.display = "flex";
-  }
+ /* Overlay Form Adult */
+ function openFormAdult() {
+  document.getElementById("plan-adult").style.display = "flex";
+}
 
-  function closeForm() {
-    document.getElementById("modal").style.display = "none";
-  }
+function closeForm() {
+  document.getElementById("plan-adult").style.display = "none";
+}
 
-  function submitForm() {
-    // Add your form submission logic here
+function submitForm() {
+  // Add your form submission logic here
 
-    // After successful submission, close the form
-    closeForm();
-  }
+  // After successful submission, close the form
+  closeForm();
+}
+
+/* Overlay Form Kid */
+function openFormKid() {
+  document.getElementById("plan-kid").style.display = "flex";
+}
+
+function closeForm() {
+  document.getElementById("plan-kid").style.display = "none";
+}
+
+function submitForm() {
+  // Add your form submission logic here
+
+  // After successful submission, close the form
+  closeForm();
+}
+
+/* Overlay Form School */
+function openFormSchool() {
+  document.getElementById("plan-school").style.display = "flex";
+}
+
+function closeForm() {
+  document.getElementById("plan-school").style.display = "none";
+}
+
+function submitForm() {
+  // Add your form submission logic here
+
+  // After successful submission, close the form
+  closeForm();
+}
+
 
   /* Owl carousel */
   $('.owl-carousel').owlCarousel({
