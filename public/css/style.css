@@ -197,7 +197,7 @@ body {
 }
 
 .close-btn {
-  top: 10px;
+  top: 7px;
   right: 10px;
   cursor: pointer;
   font-size: 2rem;
@@ -207,6 +207,7 @@ body {
 form h3 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
 }
 
 form fieldset {
@@ -215,7 +216,7 @@ form fieldset {
   display: grid;
   grid-template-columns: 50% 50%;
   border: 1px solid yellow;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 .form-container legend {
@@ -235,7 +236,7 @@ form .input-box {
 
 .form-container input, .form-container select {
   padding: 3px;
-  margin-bottom: 16px;
+  margin-bottom: 0.5em;
   box-sizing: border-box;
   border: 1px solid gray;
   background-color: gray;
