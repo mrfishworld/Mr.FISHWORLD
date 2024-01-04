@@ -1829,6 +1829,11 @@ form .input-box {
     min-width: 240px;
     margin: auto 1em;
   }
+
+  .form-container fieldset {
+  display: grid;
+  grid-template-columns: 100%;
+  }
 }
 
 @media (max-width:550px) {
