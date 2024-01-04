@@ -191,8 +191,15 @@ responsive: [
   document.getElementById("plan-adult").style.display = "flex";
 }
 
-function closeForm() {
+function closeFormAdult() {
   document.getElementById("plan-adult").style.display = "none";
+}
+
+function submitFormAdult() {
+  // Add your form submission logic here
+
+  // After successful submission, close the form
+  closeFormAdult();
 }
 
 /* Overlay Form Kid */
@@ -200,8 +207,15 @@ function openFormKid() {
   document.getElementById("plan-kid").style.display = "flex";
 }
 
-function closeForm() {
+function closeFormKid() {
   document.getElementById("plan-kid").style.display = "none";
+}
+
+function submitFormKid() {
+  // Add your form submission logic here
+
+  // After successful submission, close the form
+  closeFormKid();
 }
 
 /* Overlay Form School */
@@ -214,6 +228,9 @@ function closeForm() {
 }
 
 function submitForm() {
+  // Add your form submission logic here
+
+  // After successful submission, close the form
   closeForm();
 }
 

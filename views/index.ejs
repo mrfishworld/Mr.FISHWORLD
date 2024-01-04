@@ -3,7 +3,7 @@
       <div class="cost">
         <span>55,000 USHs per Adult</span>
       </div>
-      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <span class="close-btn" onclick="closeFormAdult()">&times;</span>
       <form id="lessonForm">
         <h3>Please provide your information to help us understand you better.</h3>
         <div class="form-input">
@@ -48,22 +48,22 @@
             </fieldset>
         </div>
 
-        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="submitFormAdult()">Submit</button>
       </form>
     </div>
   </div>
 
-  <div class="modal " id="plan-kid">
+  <div class="modal" id="plan-kid">
     <div class="form-container">
       <div class="cost">
-        <span>55,000 USHs per kid</span>
+        <span>55,000 USHs per Kid</span>
       </div>
-      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <span class="close-btn" onclick="closeFormKid()">&times;</span>
       <form id="lessonForm">
         <h3>Please provide your information to help us understand you better.</h3>
         <div class="form-input">
           <fieldset>
-            <legend>School Information</legend>
+            <legend>Personal Information</legend>
               <div class="input-box">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -83,16 +83,6 @@
             <fieldset>
               <legend>Swim Plan Information</legend>
               <div class="input-box">
-                <label for="lessonDay">Preferred Day</label>
-                <select>
-                <option value="en-us" selected>Monday</option>
-                <option value="fr">Monday</option>
-                <option value="fr">Wednesday</option>
-                <option value="fr">Friday</option>
-              </select>
-              </div>
-
-              <div class="input-box">
                 <label for="lessonTime">Preferred Lesson Time</label>
                 <select>
                 <option value="en-us" selected>Morning(10:00AM - 12:00PM)</option>
@@ -100,10 +90,19 @@
                 <option value="fr">Evening(02:00AM - 04:00PM)</option>
               </select>
               </div>
+        
+              <div class="input-box">
+                <label for="location">Preferred Training Location:</label>
+                  <select>
+                  <option value="en-us" selected>Swimworld SWimming pool</option>
+                  <option value="fr">Swimworld SWimming pool</option>
+                  <option value="fr">Pool of my choice</option>
+                </select>
+              </div>
             </fieldset>
         </div>
 
-        <button type="submit" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="submitFormKid()">Submit</button>
       </form>
     </div>
   </div>
