@@ -15,7 +15,7 @@ const connectDB = require('./server/config/db');
 const session = require('express-session');
 
 const app = express();
-const PORT = 5050 || process.env.PORT;
+const PORT = 5050 || process.env.PORT; 
 
 //connect to DB
 connectDB();  
