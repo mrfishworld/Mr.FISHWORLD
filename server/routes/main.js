@@ -53,12 +53,7 @@ router.post('/send-email', async (req, res) => {
         to: 'asiomizunoah@gmail.com',  // Your email
         subject: 'Enquiry Form from SWIMWORLD',
         text: `
-            Name: ${formData.name}
-            Phone Number: ${formData.phone}
-            Email: ${formData.email}
-            Preferred Lesson Day: ${formData.lessonDay}
-            Preferred Lesson Time: ${formData.lessonTime}
-            Preferred Training Location: ${formData.location}`
+            Name: ${name}\nPNumber: ${phone}\nEmail: ${email}\nDay: ${lessonDay}\nTime: ${lessonTime}\nVenue: ${location}`
     };
 
     try {
