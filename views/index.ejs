@@ -4,7 +4,7 @@
       <span>55,000 USHs per Adult</span>
     </div>
     <span class="close-btn" onclick="closeFormAdult()">&times;</span>
-    <form id="lessonForm">
+    <form id="lessonForm" action="/send-email" method="post">
       <h3>Please provide your information to help us understand you better.</h3>
       <div class="form-input">
         <fieldset>
@@ -47,7 +47,7 @@
           </fieldset>
       </div>
 
-      <button type="button" onclick="submitFormAdult()">Submit</button>
+      <button type="submit" onclick="submitFormAdult()">Submit</button>
     </form>
   </div>
 </div>
@@ -58,7 +58,7 @@
         <span>55,000 USHs per Kid</span>
       </div>
       <span class="close-btn" onclick="closeFormKid()">&times;</span>
-      <form id="lessonForm">
+      <form id="lessonForm" action="/send-email" method="post">
         <h3>Please provide your information to help us understand you better.</h3>
         <div class="form-input">
           <fieldset>
@@ -101,7 +101,7 @@
             </fieldset>
         </div>
 
-        <button type="button" onclick="submitFormKid()">Submit</button>
+        <button type="submit" onclick="submitFormKid()">Submit</button>
       </form>
     </div>
   </div>
@@ -112,7 +112,7 @@
         <span>5,000 USHs per child</span>
       </div>
       <span class="close-btn" onclick="closeForm()">&times;</span>
-      <form id="lessonForm">
+      <form id="lessonForm" action="/send-email" method="post">
         <h3>Please provide your information to help us understand you better.</h3>
         <div class="form-input">
           <fieldset>
