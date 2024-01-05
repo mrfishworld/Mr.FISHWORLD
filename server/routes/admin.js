@@ -174,19 +174,19 @@ router.post('/admin/register', async (req, res) => {
         
         if (!email || !password) {
             req.flash('error', 'Both Email and Password required');
-            return res.redirect('admin/register');
+            return res.redirect('/register');
         } else if (password.length < 8) {
             req.flash('error', 'Password must be at least 8 characters');
-            return res.redirect('admin/register');
+            return res.redirect('/register');
         } else {
             try {
                 const user = await User.create({ username, email, password: hashedPassword });
                 req.flash('success', 'User Created');
-                return res.redirect('admin/login');
+                return res.redirect('/login');
             } catch (error) {
                 if (error.message.includes('duplicate key error')) {
                     req.flash('error', 'Username already in use');
-                    return res.redirect('admin/register');
+                    return res.redirect('/register');
                 }
                 res.status(500).json({ message: 'Internal server error' });
             }
