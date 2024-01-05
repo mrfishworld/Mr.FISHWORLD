@@ -513,6 +513,143 @@ router.post('/create-user', authMiddleware, async (req, res) => {
     }
 });
 
+ //**
+  //GET
+ // Admin Add faqs
+ //
+ router.get('/add-faq', authMiddleware, (req, res) => {
+    const locals = {
+        title: 'Add faq',
+        layout: adminLayout,
+      };
+    res.render('admin/add-faq',{
+     locals,
+     layout: adminLayout,
+     currentPage: 'add-faq'
+    }); // Replace with your actual view name
+  });
+  
+  //**
+  //POST
+  // Admin Add faqs
+  //
+  router.post('/add-faq', authMiddleware, async (req, res) => {
+    try {
+      const newfaq = new Faq ({
+        qstn: req.body.qstn,
+        ans: req.body.ans,
+        description: req.body.description
+      });
+  
+      await Faq.create(newfaq);
+      console.log(newfaq);
+      res.redirect('/faq');// Redirect to the dashboard or other appropriate page
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  //**
+    //GET
+   // Admin faqs
+   //
+   router.get('/faq', authMiddleware, async (req, res) => {
+    try {
+        const locals = {
+            title: "Frequently asked questions."
+        };
+  
+        const faqs = await Faq.find(); 
+      // Render the faqs.ejs page and pass the faqs as locals
+      res.render('admin/faq', {
+        locals,
+        faqs,
+        layout: adminLayout,
+        currentPage: 'faq'
+    });
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  //**
+  //GET
+  // Admin Edit faqs
+  //
+  router.get('/edit-faq/:id', authMiddleware, async (req, res) => {
+    try {
+        const locals = {
+            title: 'Edit faq'
+        };
+  
+        const faq = await Faq.findOne({ _id: req.params.id });
+  
+        res.render('admin/edit-faq', { 
+            locals,
+            faq,
+            layout: adminLayout,
+            currentPage: 'edit-faq'
+         });
+    } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).render( { error: 'Internal server error' });
+    }
+  });
+  
+  //**
+  //POST
+  // Admin Edit faqs
+  //
+  router.post('/edit-faq/:id', authMiddleware, async (req, res) => {
+    try {
+      const faqId = req.params.id;
+      const faq = await Faq.findById(faqId);
+  
+      if (!faq) {
+        // faq not found
+        return res.status(404).json({ error: 'faq not found' });
+      }
+  
+      // Update the faq properties
+      faq.qstn = req.body.qstn;
+      faq.ans = req.body.ans;
+      faq.description = req.body.description;
+  
+      await Faq.save();
+  
+      res.redirect('/faq');
+    } catch (error) {
+      console.error(error);
+  
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+     //**
+  //DELETE
+  // Admin Delete faq
+  //
+  router.delete('/delete-faq/:id', authMiddleware, async (req, res) => {
+    try {
+      const faqId = req.params.id;
+      const faq = await Faq.findById(faqId); 
+  
+      await Faq.deleteOne( { _id: req.params.id }); // Remove the faq from the database
+  
+      res.redirect('/faq'); 
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
 
 
 
