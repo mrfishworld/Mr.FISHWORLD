@@ -1,0 +1,520 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+const { Topic, Post } = require('../models/Post'); 
+const { Faq, Ans } = require('../models/Faq');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const flash = require('express-flash');
+const multer  = require('multer');
+const storage = multer.memoryStorage();
+const fs = require('fs');
+const path = require('path');
+const bodyParser = require('body-parser');
+
+const upload = multer({
+    storage: storage,
+    limits: { fieldSize: 10 * 1024 * 1024 } // Increase the field size limit to 10MB
+  });
+
+  router.use(bodyParser.urlencoded({ extended: true })); 
+  
+/* const upload = multer({
+    storage: multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, 'uploads');
+      },
+      filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now());
+      }
+    })
+  }); */
+
+const adminLayout = '../views/layouts/admin';
+const jwtSecret = process.env.JWT_SECRET;
+/**
+ * GET
+ * Admin-login page
+ */
+router.get('/login', async (req,  res) => {
+    
+    try {
+
+        const locals = {
+            title: "Login",
+        }
+    
+        res.render('admin/login', { 
+            locals, 
+            layout: adminLayout,
+            currentPage: 'login'
+        });
+    } catch (error) {
+        console.log('error');
+    }
+});
+
+/**
+ * GET
+ * Admin-register page
+ */
+router.get('/register', async (req,  res) => {
+    
+    try {
+
+        const locals = {
+            title: "Register"
+        }
+    
+        res.render('admin/register', { 
+            locals, 
+            layout: adminLayout,
+            currentPage: 'register'
+        });
+    } catch (error) {
+        console.log('error');
+    }
+});
+
+/**
+ * Post
+ * Admin login 
+ */
+router.post('/admin/login', async (req,  res) => {
+    
+    try {
+
+        const { username, password } = req.body;
+        
+        const user = await User.findOne({username});
+        if(!user) {
+            req.flash('error', 'Invalid credentials')
+            return res.redirect('/admin/login')
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if(!isPasswordValid) {
+            req.flash('error', 'Invalid credentials')
+            return res.redirect('/admin/login')
+        }
+
+        const token = jwt.sign({ userId: user._id}, jwtSecret);
+        res.cookie('token', token, { httpOnly: true});
+        res.redirect('/dashboard');
+        req.flash('success', 'You are logged in')
+
+    
+       
+    } catch (error) {
+        console.log('error');
+    }
+}); 
+
+/**
+ * check-login 
+ */
+const authMiddleware = async (req, res, next) => {
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.redirect('/'); // Redirect unauthorized users to index.ejs
+    }
+
+    try {
+        const decoded = jwt.verify(token, jwtSecret);
+        req.userId = decoded.userId;
+
+        // Check if the authenticated user is an admin
+        const user = await User.findById(req.userId);
+        if (!user || !user.isAdmin) {
+            return res.redirect('/'); // Redirect non-admin users to index.ejs
+        }
+
+        next();
+    } catch (error) {
+        return res.redirect('/'); // Redirect unauthorized users to index.ejs
+    }
+};
+
+
+
+
+/**
+ * GET
+ * Admin dashboard
+ */
+router.get('/dashboard', authMiddleware, async (req,  res) => {
+
+        try {
+            const locals = {
+                title: "Dashboard",
+            }
+            const data = await Post.find();
+            res.render('admin/dashboard', {
+                locals,
+                data,
+                currentPage: 'dashboard',
+                layout: adminLayout,
+            });
+        } catch (error) {
+            console.log(error);
+        } 
+}); 
+
+
+/**
+ * POST
+ * Admin Register 
+ */
+router.post('/admin/register', async (req, res) => {
+    try {
+        const { username, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        if (!email || !password) {
+            req.flash('error', 'Both Email and Password required');
+            return res.redirect('/admin/register');
+        } else if (password.length < 8) {
+            req.flash('error', 'Password must be at least 8 characters');
+            return res.redirect('/admin/register');
+        } else {
+            try {
+                const user = await User.create({ username, email, password: hashedPassword });
+                req.flash('success', 'User Created');
+                return res.redirect('/admin/login');
+            } catch (error) {
+                if (error.message.includes('duplicate key error')) {
+                    req.flash('error', 'Username already in use');
+                    return res.redirect('/admin/register');
+                }
+                res.status(500).json({ message: 'Internal server error' });
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+/**
+ * GET
+ * Admin Create New Post
+ */
+
+router.get('/add-post', authMiddleware, async (req,  res) => {
+
+    try {
+        const locals = {
+            title: "Add Post",
+        }
+
+        const data = await Post.find();
+        const topics = await Topic.find();
+        res.render('admin/add-post', {
+            locals,
+            topics,
+            data,
+            currentPage: 'add-post',
+            layout: adminLayout,
+        });
+    } catch (error) {
+        console.log(error);
+    } 
+}); 
+
+
+/**
+ * POST
+ * Admin Create New Post
+ */
+
+router.post('/add-post', authMiddleware, upload.single('image'), async (req,  res) => {
+
+    try {
+
+        try {
+    
+            const imageObject = {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            };
+    
+            const newPost = new Post({
+                topic: req.body.topic,
+                title: req.body.title,
+                preview: req.body.preview,
+                body: req.body.body,
+                image: imageObject
+            });
+
+            await Post.create(newPost);
+            res.redirect('/dashboard');
+            req.flash('success', 'Post Added');
+
+            
+        } catch (error) {
+          console.log(error);  
+        }
+    } catch (error) {
+        console.log(error);
+    } 
+}); 
+
+router.get('/post/:id', authMiddleware, async (req, res) => {
+    try {
+        const postId = req.params.id;
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).render('error'); // or handle as you prefer
+        }
+
+        // Assuming you have a layout file for posts, update it as needed
+        res.render('admin/posts', { layout: adminLayout, post });
+    } catch (error) {
+        console.log(error);
+        res.status(500).render('error'); // or handle as you prefer
+    }
+});
+
+/**
+ * GET
+ * Admin edit Post
+ */
+
+router.get('/edit-post/:id', authMiddleware, async (req, res) => {
+    try {
+  
+      const locals = {
+        title: "Edit Post",
+      };
+  
+      const data = await Post.findOne({ _id: req.params.id });
+      const topics = await Topic.find();
+      const topic = await Topic.find();
+  
+      res.render('admin/edit-post', {
+        locals,
+        data,
+        topic, 
+        topics,
+        layout: adminLayout,
+        currentPage: 'edit-post'
+      })
+  
+    } catch (error) {
+      console.log(error);
+    }
+  
+  });
+
+/**
+ * PUT
+ * Admin Update Post
+ */
+
+router.put('/edit-post/:id', authMiddleware, upload.single('image'), async (req,  res) => {
+
+    try {
+        const imageObject = {
+            data: req.file.buffer,
+            contentType: req.file.mimetype
+        };
+       
+        await Post.findByIdAndUpdate(req.params.id, {
+
+            topic: req.body.topic,
+            title: req.body.title,
+            preview: req.body.preview,
+            body: req.body.body,
+            updatedAt: Date.now(),
+            image: imageObject
+        });
+
+        res.redirect('/dashboard');
+
+    } catch (error) {
+        console.log(error);
+    } 
+});  
+
+/**
+ * DELETE POST
+ * Admin Delete Post
+ */
+router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
+
+    try {
+        await Post.deleteOne( { _id: req.params.id });
+        res.redirect('/dashboard');
+        req.flash('success', 'Post Deleted');
+    } catch (error) {
+        console.log('error')
+    }
+});
+
+/**
+ * GET
+ * Admin Logout
+ */
+router.get('/logout', (req, res) => {
+    res.clearCookie('token');
+    /* res.json({ message: 'Logout successful'}); */
+    res.redirect('/');
+});
+
+/**
+ * GET
+ * Admin users page
+ */
+router.get('/users', authMiddleware, async (req, res) => {
+    try {
+        const locals = {
+            title: "Users",
+        };
+
+        const users = await User.find();
+        res.render('admin/users', {
+            locals,
+            users,
+            layout: adminLayout,
+            currentPage: 'users'
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+/**
+ * GET
+ * Admin Edit User
+ */
+router.get('/edit-user/:id', authMiddleware, async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).render('error'); // or handle as you prefer
+        }
+
+        const locals = {
+            title: 'Edit User',
+        };
+
+        res.render('admin/edit-user', {
+            locals,
+            layout: adminLayout,
+            user,
+            currentPage: 'edit-user'
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).render('error'); // or handle as you prefer
+    }
+});
+
+/**
+ * POST
+ * Admin Update User
+ */
+router.post('/edit-user/:id', authMiddleware, async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { username, email, password, passwordconf, isAdmin } = req.body;
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).render('error'); // or handle as you prefer
+        }
+
+        user.username = username;
+        user.email = email;
+        user.isAdmin = isAdmin === 'true';
+
+        if (password && password === passwordconf) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            user.password = hashedPassword;
+        }
+
+        await user.save();
+        res.redirect('/users'); // Redirect to the users page after updating
+    } catch (error) {
+        console.log(error);
+        res.status(500).render('error'); // or handle as you prefer
+    }
+});
+
+/**
+ * DELETE User
+ * Admin Delete User
+ */
+router.delete('/delete-user/:id', authMiddleware, async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+        
+        if (!user) {
+            return res.status(404).render('error'); // or handle as you prefer
+        }
+
+        await user.deleteOne( { _id: req.params.id });
+        res.redirect('/users');
+        req.flash('success', 'User deleted') // Redirect to the users page after deletion
+    } catch (error) {
+        console.log(error); // or handle as you prefer
+    }
+});
+
+/**
+ * GET
+ * Admin Create User Form
+ */
+router.get('/create-user', authMiddleware, async (req, res) => {
+    try {
+        const locals = {
+            title: "Create User",
+        };
+        
+        res.render('admin/create-user', {
+            locals,
+            currentPage: 'create-user',
+            layout: adminLayout
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+/**
+ * POST
+ * Admin Create User
+ */
+router.post('/create-user', authMiddleware, async (req, res) => {
+    try {
+        const { username, email, password, passwordconf, role } = req.body;
+
+        // Additional validation here if needed
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = new User({
+            username,
+            email,
+            password: hashedPassword,
+            isAdmin: role === 'Admin'
+        });
+
+        await user.save();
+        res.redirect('/users');
+        req.flash('success', 'User created') // Redirect to the users page after user creation
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+
+
+
+module.exports = router, { authMiddleware };

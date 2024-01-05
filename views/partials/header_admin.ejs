@@ -1,46 +1,62 @@
 <div id="top"></div>
 <header class="header">
-    
-    <div class="nav">
-
-        <div class="logo">
-            <p>aHUB</p>
-        </div>
-     
-        <div class="menu-container">
-
-            <div class="nav-mode">
-                <a id="toggleDark"><i class="bx bx-moon Theme-icon"></i></a>
-            </div>
-
-            <% if (currentPage === 'login') { %>
-                <div class=" ">
-                    <a href="register">
-                        <button class="logout_btn btn">
-                            Sign Up
-                        </button>
-                    </a>
-                </div>
-            <% } else if (currentPage === 'register') { %>
-                <div class=" ">
-                    <a href="login">
-                        <button class="logout_btn btn">
-                            Sign In
-                        </button>
-                    </a>
-                </div>
-            <% } else if (currentPage === 'dashboard' || currentPage === 'add-post' || currentPage === 'add-project'|| currentPage === 'add-service'|| currentPage === 'create-user'|| currentPage === 'edit-post'|| currentPage === 'edit-project'|| currentPage === 'edit-service'|| currentPage === 'edit-user'|| currentPage === 'latest-projects'|| currentPage === 'my-services'|| currentPage === 'users') { %>
-                <div class=" ">
-                    <a href="/logout">
-                        <button class="logout_btn btn">
-                            Sign Out
-                        </button>
-                    </a>
-                </div>
-            <% } %>
-
-        </div>
-
+    <!-- Top Section -->
+    <div class="top-section">
+      <div class="top-section-nav">
+        <div class="top-section-nav-item language-dropdown">
+            <!-- Language Dropdown -->
+            <select>
+              <option value="en-us" selected>English (US)</option>
+              <!-- <option value="fr">French</option> -->
+            </select>
+          </div>
+          <!-- <div class="top-section-nav-item sign-in-button">
+            <button>Sign In</button>
+          </div> -->
+      </div>
     </div>
 
+    <nav-bar class="main-header">
+
+      <!-- Bottom Section -->
+      <div class="bottom-section admin">
+        <div class="logo">
+          <p>Mr.FISHWORLD</p>
+        </div>
+            
+        <div class="menu">
+          <i class='bx bx-menu'></i>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="main-nav">
+          <% if (currentPage === 'login') { %>
+            <div class=" ">
+                <a href="register">
+                    <button class="btn-blue">
+                        Sign Up
+                    </button>
+                </a>
+            </div>
+        <% } else if (currentPage === 'register') { %>
+            <div class=" ">
+                <a href="login">
+                    <button class="btn-blue">
+                        Sign In
+                    </button>
+                </a>
+            </div>
+        <% } else if (currentPage === 'dashboard' || currentPage === 'add-post' || currentPage === 'add-project'|| currentPage === 'add-service'|| currentPage === 'create-user'|| currentPage === 'edit-post'|| currentPage === 'edit-project'|| currentPage === 'edit-service'|| currentPage === 'edit-user'|| currentPage === 'latest-projects'|| currentPage === 'my-services'|| currentPage === 'users') { %>
+            <div class=" ">
+                <a href="/logout">
+                    <button class="btn-blue">
+                        Sign Out
+                    </button>
+                </a>
+            </div>
+        <% } %>
+
+        </ul>
+      </div>
+    </nav-bar>
 </header>
