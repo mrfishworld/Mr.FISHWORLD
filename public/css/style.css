@@ -1893,7 +1893,8 @@ form .input-box {
 
 
 /* ADMIN SECTION */
-.auth-content {
+
+.main.admin {
   margin-top: 6.2em;
 }
 
@@ -1968,6 +1969,28 @@ form button {
   overflow-y: scroll;
 }
 
+/* Error Messages */
+
+.success {
+  color: #3a6e3a;
+  border: 1px solid #3a6e3a;
+  background: #bcf5bc;
+  padding: 5px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.error {
+  color:#bcf5bc ;
+  border: 1px solid #884b4b;
+  background: #884b4b;
+  padding: 5px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+}
+
 /* Dashboard  */
 .bottom-section.admin {
   display: flex;
@@ -1999,22 +2022,21 @@ form button {
 /* Add Posts */
 .admin_wrapper .admin-content .content form.add-post label {
   font-size: 1rem;
-  color: var(--TEXT-COLOR);
   
 }
-.admin_wrapper .admin-content .content form.add-post input.text-input {
+.admin_wrapper .admin-content .content form.add-post input, .admin_wrapper .admin-content .content form.add-post textarea {
   width: 100%;
   padding: 1.5rem;
-  background: var(--SECOND-MAIN-COLOR);
-  border-radius: 0.8rem;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background-color: gray;
   margin: 0.7rem;
 }
 
 .admin_wrapper .admin-content .content form.add-post select {
   padding: 0.5rem  3rem;
   font-size: 1rem;
-  color: var(--TEXT-COLOR);
-  background: var(--SERVICES-BG-COLOR);
+  background: gray;
   margin: 0.7rem;
 }
 
