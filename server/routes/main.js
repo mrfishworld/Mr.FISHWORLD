@@ -36,7 +36,7 @@ router.get('', async (req, res) => {
 
 /* NODE MAILER */
 router.post('/send-email', async (req, res) => {
-    const { email, message } = req.body;
+    const { name, phone, email, lessonDay, lessonTime, location } = req.body;
 
     // Create a nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -50,8 +50,8 @@ router.post('/send-email', async (req, res) => {
     // Email options
     const mailOptions = {
         from: email,
-        to: 'asiomizunoah@gmail.com',  // Your email
-        subject: 'Enquiry Form from SWIMWORLD',
+        to: 'phinicxd@gmail.com',  // Your email
+        subject: 'Client from SWIMWORLD',
         text: `
             Name: ${name}\nPNumber: ${phone}\nEmail: ${email}\nDay: ${lessonDay}\nTime: ${lessonTime}\nVenue: ${location}`
     };
