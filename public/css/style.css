@@ -1807,6 +1807,10 @@ form .input-box {
     margin-bottom: -6em;
   }
 
+  .post-info:hover, .post-info.active {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+
   .post-nav {
     margin-top: 27em;
   }

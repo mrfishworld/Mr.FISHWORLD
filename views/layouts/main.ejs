@@ -93,6 +93,36 @@
             }
         });
        </script>
+       <script>
+        // Add event listener for scroll
+        window.addEventListener('scroll', function () {
+            // Get the current scroll position
+            const scrollPosition = window.scrollY;
+    
+            // Get all post-info elements
+            const postInfos = document.querySelectorAll('.post-info');
+    
+            // Loop through each post-info element
+            postInfos.forEach(function (postInfo, index) {
+                // Get the offsetTop of the post-info element
+                const postInfoOffsetTop = postInfo.offsetTop;
+    
+                // Check if the post-info element is approximately in the middle of the screen
+                if (
+                    scrollPosition >= postInfoOffsetTop - (window.innerHeight / 2) &&
+                    scrollPosition < postInfoOffsetTop + postInfo.offsetHeight - (window.innerHeight / 2)
+                ) {
+                    // Remove the 'active' class from all post-info elements
+                    postInfos.forEach(function (p) {
+                        p.classList.remove('active');
+                    });
+    
+                    // Add the 'active' class to the current post-info element
+                    postInfo.classList.add('active');
+                }
+            });
+        });
+    </script>
     
 </body>
 </html>

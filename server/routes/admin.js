@@ -425,7 +425,7 @@ router.post('/edit-user/:id', authMiddleware, async (req, res) => {
 
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(404).render('error'); // or handle as you prefer
+            return res.status(404).render(error); // or handle as you prefer
         }
 
         user.username = username;
@@ -441,7 +441,7 @@ router.post('/edit-user/:id', authMiddleware, async (req, res) => {
         res.redirect('/users'); // Redirect to the users page after updating
     } catch (error) {
         console.log(error);
-        res.status(500).render('error'); // or handle as you prefer
+        res.status(500).render(error); // or handle as you prefer
     }
 });
 
