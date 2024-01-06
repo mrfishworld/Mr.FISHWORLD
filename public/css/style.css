@@ -197,7 +197,7 @@ body {
 }
 
 .close-btn {
-  top: 7px;
+  top: 10px;
   right: 10px;
   cursor: pointer;
   font-size: 2rem;
@@ -207,7 +207,6 @@ body {
 form h3 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
 }
 
 form fieldset {
@@ -216,7 +215,7 @@ form fieldset {
   display: grid;
   grid-template-columns: 50% 50%;
   border: 1px solid yellow;
-  margin-top: 0.5em;
+  margin-top: 1em;
 }
 
 .form-container legend {
@@ -236,7 +235,7 @@ form .input-box {
 
 .form-container input, .form-container select {
   padding: 3px;
-  margin-bottom: 0.5em;
+  margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid gray;
   background-color: gray;
@@ -841,7 +840,7 @@ form .input-box {
   width: 100%;
   height: 100%;
   z-index: -1000;
-  background-image: linear-gradient(rgba(15, 15, 15, 0.425), rgba(24, 24, 24, 0.404)), url('/Img/crash-courses.jpg'); /* Replace with your background image path */
+  background-image: linear-gradient(rgba(15, 15, 15, 0.425), rgba(24, 24, 24, 0.404)), url('/Img/woamn-diving.jpeg'); /* Replace with your background image path */
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   mask-image: url('/Img/mask-bg-img.png'); /* Replace with your mask image path */
@@ -1213,8 +1212,11 @@ form .input-box {
 /* About page */
 .about {
   width: 100%;
-  padding: 12em 10%;
+  padding: 9em 10%;
   z-index: -1000;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .instructor-content {
@@ -1222,15 +1224,11 @@ form .input-box {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-}
-
-.instructor-content img {
-  width: 420px;
-  height: auto;
+  margin-bottom: 2em;
 }
 
 .instructor-content .instructor-text {
-  max-width: 550px;
+  max-width: 650px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -1238,8 +1236,8 @@ form .input-box {
 }
 
 .instructor-content .instructor-text h1 {
-  font-size: 3rem;
-  margin-bottom: 0.3em;
+  font-size: 2.3rem;
+  margin-bottom: 0.7em;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -1249,7 +1247,7 @@ form .input-box {
 
 .instructor-content .instructor-text h3 {
   position: relative;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 1em;
 }
 
@@ -1280,6 +1278,63 @@ form .input-box {
   font-family: 'Poppins', sans-serif;
 
 }
+
+.team-container {
+  margin-top: em;
+}
+
+.team-container h3 {
+  margin-bottom: 1em;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 1rem;
+
+}
+
+.team-container .team-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 2em auto;
+}
+
+.team-container h3.team {
+  color: var(--BODY-TEXT-COLOR);
+  font-size: 2rem;
+}
+
+.team-container h4 {
+  color: var(--BODY-TEXT-COLOR);
+}
+
+.team-member {
+  max-width: 400px;
+  margin: 0.5em auto;
+  background: var(--SECOND-BG-COLOR);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 1em;
+  text-align: center;
+}
+
+.team-member img {
+  max-width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-family: 'Poppins', sans-serif;
+  color:#fff;
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #666;
+}
+
 
 .about-content {
   background-image: url('/Img/home.jpg');
@@ -1678,6 +1733,26 @@ form .input-box {
     font-size: 2rem;
   }
 
+  .about {
+    padding: 7em 10% 10em 10%;
+  }
+  
+  .instructor-content .instructor-text h1 {
+    font-size: 2rem;
+    margin-bottom: 0.7em;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .instructor-content .instructor-text h1 span {
+    color: rgb(218, 218, 3);
+  }
+  
+  .instructor-content .instructor-text h3 {
+    position: relative;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+
   .footer .middle-section {
     padding: 0.5em 0;
     display: flex;
@@ -1818,6 +1893,24 @@ form .input-box {
   .popular-posts {
     margin-top: 1.5em;
   }
+
+  .product-action a.btn {
+    margin-top: 0;
+    opacity: 1;
+  }
+
+  .product-item:hover .product-action a.btn:not(:hover) {
+    opacity: 0;
+    margin-top: 100px;
+  }
+}
+
+
+@media (max-width:720px) {
+  .form-container {
+    min-width: 240px;
+    margin: auto 1em;
+  }
 }
 
 @media (max-width:570px) {
@@ -1827,18 +1920,8 @@ form .input-box {
     align-items: center;
     justify-content: center;
   }
-}
 
-@media (max-width:720px) {
-  .form-container {
-    min-width: 240px;
-    margin: auto 1em;
-  }
 
-  .form-container fieldset {
-  display: grid;
-  grid-template-columns: 100%;
-  }
 }
 
 @media (max-width:550px) {
@@ -1896,9 +1979,9 @@ form .input-box {
 }
 
 
-/* ADMIN SECTION */
 
-.main.admin {
+/* ADMIN SECTION */
+.auth-content {
   margin-top: 6.2em;
 }
 
@@ -1973,28 +2056,6 @@ form button {
   overflow-y: scroll;
 }
 
-/* Error Messages */
-
-.success {
-  color: #3a6e3a;
-  border: 1px solid #3a6e3a;
-  background: #bcf5bc;
-  padding: 5px;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.error {
-  color:#bcf5bc ;
-  border: 1px solid #884b4b;
-  background: #884b4b;
-  padding: 5px;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 5px;
-}
-
 /* Dashboard  */
 .bottom-section.admin {
   display: flex;
@@ -2026,21 +2087,22 @@ form button {
 /* Add Posts */
 .admin_wrapper .admin-content .content form.add-post label {
   font-size: 1rem;
+  color: var(--TEXT-COLOR);
   
 }
-.admin_wrapper .admin-content .content form.add-post input, .admin_wrapper .admin-content .content form.add-post textarea {
+.admin_wrapper .admin-content .content form.add-post input.text-input {
   width: 100%;
   padding: 1.5rem;
-  border: 1px solid #fff;
-  border-radius: 3px;
-  background-color: gray;
+  background: var(--SECOND-MAIN-COLOR);
+  border-radius: 0.8rem;
   margin: 0.7rem;
 }
 
 .admin_wrapper .admin-content .content form.add-post select {
   padding: 0.5rem  3rem;
   font-size: 1rem;
-  background: gray;
+  color: var(--TEXT-COLOR);
+  background: var(--SERVICES-BG-COLOR);
   margin: 0.7rem;
 }
 
