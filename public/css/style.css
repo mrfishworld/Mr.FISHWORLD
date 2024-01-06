@@ -1280,7 +1280,7 @@ form .input-box {
 }
 
 .team-container {
-  margin-top: em;
+  margin-bottom: 2em;
 }
 
 .team-container h3 {
@@ -1734,7 +1734,7 @@ form .input-box {
   }
 
   .about {
-    padding: 7em 10% 10em 10%;
+    padding-top: 7em ;
   }
   
   .instructor-content .instructor-text h1 {
