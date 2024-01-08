@@ -243,6 +243,7 @@ router.post('/add-post', authMiddleware, upload.single('image'), async (req,  re
     
             const newPost = new Post({
                 topic: req.body.topic,
+                img: req.body.img,
                 title: req.body.title,
                 preview: req.body.preview,
                 body: req.body.body,
@@ -325,6 +326,7 @@ router.put('/edit-post/:id', authMiddleware, upload.single('image'), async (req,
         await Post.findByIdAndUpdate(req.params.id, {
 
             topic: req.body.topic,
+            img: req.body.img,
             title: req.body.title,
             preview: req.body.preview,
             body: req.body.body,

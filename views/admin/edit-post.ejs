@@ -38,9 +38,12 @@
                         <% }); %>
                     </select>
                 </div>
-                
-                
 
+                <div>
+                    <label for="body">Post Image (Only select image)</label>
+                    <textarea name="body" id="mytextarea" cols="50" rows="10"></textarea>
+                </div>
+                
                 <div>
                     <label for="title">Title</label>
                     <input type="text" name="title" class="text-input" value="<%= data.title %>">
@@ -48,7 +51,7 @@
 
                 <div>
                     <label for="preview">Preview</label>
-                    <textarea name="preview" id="body" cols="50" rows="5"><%= data.preview %></textarea>
+                    <textarea name="preview" id="body" cols="50" rows="5"><%= data.preview % maxlength="150"></textarea>
                 </div>
 
                 <div>

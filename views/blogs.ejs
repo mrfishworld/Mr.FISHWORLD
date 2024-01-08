@@ -1,7 +1,7 @@
 
 <div class="hero">
   <div class="hero-bg"></div>
-  <img src="Img/home.jpg" alt="">
+  <img src="Img/home.jpeg" alt="">
   <div class="overlay">
     <h1>Our Swimming Blogs</h1>
   </div>
@@ -19,148 +19,72 @@
                               
                               
                       <div class="owl-carousel owl-theme">
-  
+                            
+                        <% popularPosts.forEach(popularPost => { %>
                           <div class="post">
                               <div class="img">
-                                  <img src="/Img/home.jpg" alt="Swimming">
+                                  <%- popularPost.img %>
                               </div>
                               <div class="post-info">
                                   <div class="topic">
-                                      <h5>FITNESS & WELLNESS</h5>
+                                      <h5><%= popularPost.topic %></h5>
                                   </div>
                                   <div class="more-post-info">
-                                      <h2>CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?111</h2>
+                                      <h2><%= popularPost.title %></h2>
                                       <p>
-                                          If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
+                                          <%= popularPost.preview %>
                                       </p>
                                       <div class="author-date">
                                           <i class='bx bx-user'>Coach Moses</i> 
                                           <i class='bx bxs-calendar'>02-Jan-2024</i>
                                       </div>
-                                      <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
+                                      <div class="read-more"><a href="posts/<%= popularPost._id %>">Read More</a><i class='bx bx-link-external'></i></div>
                                   </div>
                               </div>
                           </div>
-  
-                          <div class="post">
-                              <div class="img">
-                                  <img src="/Img/swimming-equipment.webp" alt="Swimming">
-                              </div>
-                              <div class="post-info">
-                                  <div class="topic">
-                                      <h5>EQUIPMENT & GEAR</h5>
-                                  </div>
-                                  <div class="more-post-info">
-                                      <h2>WHAT GEAR IS BEST FOR SWIMMING IN COLD WEATHER?</h2>
-                                      <p>
-                                          If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
-                                      </p>
-                                      <div class="author-date">
-                                          <i class='bx bx-user'>Coach Moses</i> 
-                                          <i class='bx bxs-calendar'>08-Jan-2025</i>
-                                      </div>
-                                      <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
-                                  </div>
-                              </div>
-                          </div>
+                        <% }) %> 
                       </div>
                       </div>
           </div>
           <div class="other-posts">
+            <% data.forEach(post => { %>
               <div class="post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="Swimming">
+                      <%- post.img %>
                   </div>
                   <div class="post-info">
                       <div class="topic">
-                          <h5>FITNESS & WELLNESS</h5>
+                          <h5><%= post.topic %></h5>
                       </div>
                       <div class="more-post-info">
-                          <h2>CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</h2>
+                          <h2><%= post.title %></h2>
                           <p>
-                              If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
+                              <%= post.preview %>
                           </p>
                           <div class="author-date">
                               <i class='bx bx-user'>Coach Moses</i> 
                               <i class='bx bxs-calendar'>02-Jan-2024</i>
                           </div>
-                          <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
+                          <div class="read-more"><a href="/post/<%= post._id %>">Read More</a><i class='bx bx-link-external'></i></div>
                       </div>
                   </div>
               </div>
-              <div class="post">
-                  <div class="img">
-                      <img src="/Img/home.jpg" alt="Swimming">
-                  </div>
-                  <div class="post-info">
-                      <div class="topic">
-                          <h5>FITNESS & WELLNESS</h5>
-                      </div>
-                      <div class="more-post-info">
-                          <h2>CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</h2>
-                          <p>
-                              If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
-                          </p>
-                          <div class="author-date">
-                              <i class='bx bx-user'>Coach Moses</i> 
-                              <i class='bx bxs-calendar'>02-Jan-2024</i>
-                          </div>
-                          <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
-                      </div>
-                  </div>
-              </div>
-              <div class="post">
-                  <div class="img">
-                      <img src="/Img/home.jpg" alt="Swimming">
-                  </div>
-                  <div class="post-info">
-                      <div class="topic">
-                          <h5>FITNESS & WELLNESS</h5>
-                      </div>
-                      <div class="more-post-info">
-                          <h2>CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</h2>
-                          <p>
-                              If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
-                          </p>
-                          <div class="author-date">
-                              <i class='bx bx-user'>Coach Moses</i> 
-                              <i class='bx bxs-calendar'>02-Jan-2024</i>
-                          </div>
-                          <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
-                      </div>
-                  </div>
-              </div>
-              <div class="post">
-                  <div class="img">
-                      <img src="/Img/home.jpg" alt="Swimming">
-                  </div>
-                  <div class="post-info">
-                      <div class="topic">
-                          <h5>FITNESS & WELLNESS</h5>
-                      </div>
-                      <div class="more-post-info">
-                          <h2>CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</h2>
-                          <p>
-                              If you wear contact lenses, you might wonder, “Can you swim with contacts?” The FDA makes it clear that you should not expose contact lenses to any type of water, …
-                          </p>
-                          <div class="author-date">
-                              <i class='bx bx-user'>Coach Moses</i> 
-                              <i class='bx bxs-calendar'>02-Jan-2024</i>
-                          </div>
-                          <div class="read-more"><a href="#">Read More</a><i class='bx bx-link-external'></i></div>
-                      </div>
-                  </div>
-              </div>
+            
+            <% }) %>
           </div>
+
+          <% if (nextPage !== null) { %>
           <div class="post-nav">
               <div class="prev">
                   <a href="#"><i class='bx bx-skip-previous' >Prev Page</i></a>
               </div>
   
               <div class="next">
-                  <a href="#"><i class='bx bx-skip-next'>Next Page</i></a>
+                  <a href="/?page=<%= nextPage %>"><i class='bx bx-skip-next'>Next Page</i></a>
               </div>
           </div>
+          
+          <% } %>
       </div>
   
       <div class="blogs-side-bar">
@@ -168,7 +92,7 @@
               <h2>Most popular Posts</h2>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="">
+                      <img src="/Img/home.jpeg" alt="">
                   </div>
           
                   <div class="popular-post-info">
@@ -178,7 +102,7 @@
               </div>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="">
+                      <img src="/Img/home.jpeg" alt="">
                   </div>
           
                   <div class="popular-post-info">
@@ -188,7 +112,7 @@
               </div>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="">
+                      <img src="/Img/home.jpeg" alt="">
                   </div>
           
                   <div class="popular-post-info">
@@ -198,7 +122,7 @@
               </div>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="">
+                      <img src="/Img/home.jpeg" alt="">
                   </div>
           
                   <div class="popular-post-info">
@@ -208,7 +132,7 @@
               </div>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpg" alt="">
+                      <img src="/Img/home.jpeg" alt="">
                   </div>
           
                   <div class="popular-post-info">

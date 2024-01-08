@@ -16,6 +16,10 @@ const PostSchema = new Schema({
         type: String,
         required: Boolean,
     },
+    img: {
+        type: String,
+        required: Boolean,
+    },
     body: {
         type: String,
         required: Boolean,

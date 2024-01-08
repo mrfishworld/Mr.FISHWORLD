@@ -170,6 +170,7 @@ body {
 
 .menu .bx-menu, .menu .bx-x {
   font-size: 2.5rem;
+  color: #fff;
 }
 
 /* Overlay Form */
@@ -1970,6 +1971,14 @@ form .input-box {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+  }
+
+  form fieldset {
+    grid-template-columns: 100%;
+  }
+
+  .people-carousel h2 {
+    font-size: 2rem;
   }
 
 

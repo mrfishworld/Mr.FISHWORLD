@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const { Topic, Post } = require('../models/Post');
+const { Faq, Ans } = require('../models/Faq');
 const multer  = require('multer');
 const storage = multer.memoryStorage();
 
@@ -11,6 +13,19 @@ const upload = multer({
   storage: storage,
   // Other Multer configuration options...
 });
+
+const fetchPopularPosts = async () => {
+  try {
+    const popularPosts = await Post.aggregate([
+      { $sort: { views: -1 } }, // Sort by views in descending order
+      { $limit: 7 } // Get the top 4 popular posts
+    ]);
+    return popularPosts;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 router.get('', async (req, res) => {
   try {
@@ -129,8 +144,37 @@ router.get('/blogs', async (req, res) => {
       description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
     };
 
+    const popularPosts = await fetchPopularPosts();
+    
+    const faqs = await Faq.find(); 
+
+    let perPage = 10;
+    let page = req.query.page || 1;
+
+    const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
+    .skip(perPage * page - perPage)
+    .limit(perPage)
+    .exec();
+
+      // Ensure each 'post' object has a properly populated 'image' property
+      for (const post of data) {
+        if (post.image && post.image.data && post.image.contentType) {
+          post.image.data = post.image.data.toString('base64');
+        }
+      }
+
+    const count = await Post.count();
+    const nextPage = parseInt(page) + 1;
+    const hasNextPage = nextPage <= Math.ceil(count / perPage);
+    const topics = await Topic.find();
+
     res.render('blogs', {
-      locals
+      locals,
+      data,
+      topics,
+      popularPosts,
+      current: page,
+      nextPage: hasNextPage ? nextPage : null
     }); 
   } catch (error) {
     console.error(error);
