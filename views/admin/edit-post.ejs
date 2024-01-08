@@ -41,7 +41,7 @@
 
                 <div>
                     <label for="body">Post Image (Only select image)</label>
-                    <textarea name="body" id="mytextarea" cols="50" rows="10"></textarea>
+                    <textarea name="body" id="mytextarea" cols="50" rows="10" <%- data.img %>></textarea>
                 </div>
                 
                 <div>
@@ -51,12 +51,12 @@
 
                 <div>
                     <label for="preview">Preview</label>
-                    <textarea name="preview" id="body" cols="50" rows="5"><%= data.preview % maxlength="150"></textarea>
+                    <textarea name="preview" id="body" cols="50" rows="5"><%= data.preview %> maxlength="150"></textarea>
                 </div>
 
                 <div>
                     <label for="body">Body</label>
-                    <textarea name="body" id="mytextarea" cols="50" rows="10"><%= data.body %></textarea>
+                    <textarea name="body" id="mytextarea" cols="50" rows="10"><%- data.body %></textarea>
                 </div>
 
                 <div>
