@@ -1117,11 +1117,16 @@ form .input-box {
 
 .middle-section {
   margin: 0.5em 0;
+  display: flex ;
+  flex-flow: row wrap;
+  gap: 2em;
+  
 }
 
 .middle-section .contacts {
   display: flex;
   flex-flow: column nowrap;
+  max-width: 550px;
 }
 
 .middle-section .contacts h3 {
@@ -1131,8 +1136,24 @@ form .input-box {
   margin-bottom: 1em;
 }
 
+.middle-section .contacts {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.middle-section .contacts .c-details {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.middle-section .contacts a i {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
 .middle-section .contacts a {
-  color: #818080;
+  color: #aaaaaa;
   text-decoration: none;
   font-family: 'Noto Sans', sans-serif;
   font-weight: bold;
@@ -1142,6 +1163,7 @@ form .input-box {
   display: flex;
   flex-flow: column nowrap;
   margin-top: 2em;
+  min-width: 250px;
 
 }
 
