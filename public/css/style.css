@@ -28,10 +28,6 @@ body {
   width: 100%;
 }
 
-.main-shop {
-  margin-top: 5em;
-}
-
 /* Top Section Styles */
 .top-section {
   position: fixed;
@@ -272,6 +268,21 @@ form .input-box {
   width: 100%;
   height: 100vh;
   position: relative;
+}
+
+.main-shop .hero, .main-blog .hero {
+  height: 70vh;
+}
+
+.main-shop .hero img, .main-blog .hero img {
+  height: 70vh;
+}
+
+.main-shop .hero .overlay, .main-blog .hero .overlay {
+  position: absolute;
+  top: 60%;
+  left: 0%;
+  padding: 0 10%;
 }
 
 .hero::before {
@@ -1106,7 +1117,7 @@ form .input-box {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  padding: 3em;
+  padding: 2em 0;
   border-bottom: 1px solid #0000006b;
 }
 
@@ -1123,6 +1134,7 @@ form .input-box {
 }
 
 .footer .middle-section {
+  margin-top: 2em;
   display: flex;
   flex-flow: row;
   justify-content: space-around;
@@ -1500,7 +1512,7 @@ form .input-box {
 
 
 /* Shop */
-.col-lg-4 {
+.px-xl-5 {
   margin-top: 3em;
 }
 
@@ -1515,6 +1527,7 @@ form .input-box {
   object-fit: cover;
   object-position: center center;
 }
+
 /* Blogs */
 .blog-wrapper {
   margin: 2em 10% 0 10%;
@@ -1535,10 +1548,6 @@ form .input-box {
   display: flex;
   flex-flow: column nowrap;
 
-}
-
-.post .img {
-  height: 70%;
 }
 
 .post .img img {
@@ -1656,7 +1665,7 @@ form .input-box {
   margin-left: 2.5em;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .popular-posts h2 {
@@ -1675,14 +1684,15 @@ form .input-box {
   margin-right: 2em;
   height: 70px;
   width: 70px;
+  border-radius: 50%;
 }
 
 .popular-post .img img {
+  display: block;
   height: 100%;
   width: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
 }
 
 .popular-post h3 {
@@ -1931,7 +1941,11 @@ form .input-box {
   }
 
   .other-posts .post {
-    margin-bottom: -6em;
+    margin-bottom: -4em;
+  }
+
+  .blogs-side-bar {
+    margin-top: 20em;
   }
 
   .post-info:hover, .post-info.active {
@@ -2041,7 +2055,7 @@ form .input-box {
 
 
 /* ADMIN SECTION */
-.auth-content {
+.auth-content, .admin_wrapper{
   margin-top: 6.2em;
 }
 
@@ -2098,7 +2112,7 @@ form button {
 
 .admin_wrapper {
   display: flex;
-  height: calc(83.5vh);
+  height: calc(85.5vh);
   overflow-y: hidden;
 }
 
@@ -2145,32 +2159,27 @@ form button {
 }
 
 /* Add Posts */
+
 .admin_wrapper .admin-content .content form.add-post label {
   font-size: 1rem;
-  color: var(--TEXT-COLOR);
-  
 }
+
 .admin_wrapper .admin-content .content form.add-post input.text-input {
   width: 100%;
   padding: 1.5rem;
-  background: var(--SECOND-MAIN-COLOR);
-  border-radius: 0.8rem;
+  border-radius: 3px;
   margin: 0.7rem;
 }
 
 .admin_wrapper .admin-content .content form.add-post select {
   padding: 0.5rem  3rem;
   font-size: 1rem;
-  color: var(--TEXT-COLOR);
-  background: var(--SERVICES-BG-COLOR);
   margin: 0.7rem;
 }
 
 .admin_wrapper .admin-content .content form.add-post #img-input {
   padding: 0.5rem  3rem;
   font-size: 1rem;
-  color: var(--TEXT-COLOR);
-  background: var(--SERVICES-BG-COLOR);
   margin: 0.7rem;
 }
 
