@@ -1,13 +1,14 @@
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <img src="Img/home.jpeg" alt="">
-  <div class="overlay">
-    <h1>Our Swimming Blogs</h1>
-  </div>
-</div> 
 
 <div class="main-blog">
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <img src="Img/home.jpeg" alt="">
+        <div class="overlay">
+          <h1>Our Swimming Blogs</h1>
+        </div>
+      </div> 
 
   <div class="blog-wrapper">
       <!-- Trending post carousel -->
@@ -36,7 +37,7 @@
                                       </p>
                                       <div class="author-date">
                                           <i class='bx bx-user'>Coach Moses</i> 
-                                          <i class='bx bxs-calendar'>02-Jan-2024</i>
+                                          <i class='bx bxs-calendar'><%= popularPost.createdAt.toDateString()%></i>
                                       </div>
                                       <div class="read-more"><a href="posts/<%= popularPost._id %>">Read More</a><i class='bx bx-link-external'></i></div>
                                   </div>
@@ -90,56 +91,18 @@
       <div class="blogs-side-bar">
           <div class="popular-posts">
               <h2>Most popular Posts</h2>
+              <% popularPosts.forEach(popularPost => { %>
               <div class="popular-post">
                   <div class="img">
-                      <img src="/Img/home.jpeg" alt="">
+                    <%- popularPost.img %>
                   </div>
           
                   <div class="popular-post-info">
-                      <h3><a href="#">CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</a></h3>
-                      <i class='bx bxs-calendar'>02-Jan-2024</i>
+                      <h3><a href="#"><%= popularPost.title %></a></h3>
+                      <i class='bx bxs-calendar'><%= popularPost.createdAt.toDateString()%></i>
                   </div>
               </div>
-              <div class="popular-post">
-                  <div class="img">
-                      <img src="/Img/home.jpeg" alt="">
-                  </div>
-          
-                  <div class="popular-post-info">
-                      <h3><a href="#">CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</a></h3>
-                      <i class='bx bxs-calendar'>02-Jan-2024</i>
-                  </div>
-              </div>
-              <div class="popular-post">
-                  <div class="img">
-                      <img src="/Img/home.jpeg" alt="">
-                  </div>
-          
-                  <div class="popular-post-info">
-                      <h3><a href="#">CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</a></h3>
-                      <i class='bx bxs-calendar'>02-Jan-2024</i>
-                  </div>
-              </div>
-              <div class="popular-post">
-                  <div class="img">
-                      <img src="/Img/home.jpeg" alt="">
-                  </div>
-          
-                  <div class="popular-post-info">
-                      <h3><a href="#">CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</a></h3>
-                      <i class='bx bxs-calendar'>02-Jan-2024</i>
-                  </div>
-              </div>
-              <div class="popular-post">
-                  <div class="img">
-                      <img src="/Img/home.jpeg" alt="">
-                  </div>
-          
-                  <div class="popular-post-info">
-                      <h3><a href="#">CAN YOU SWIM WITH CONTACTS, AND WHAT ARE THE RISKS?</a></h3>
-                      <i class='bx bxs-calendar'>02-Jan-2024</i>
-                  </div>
-              </div>
+              <% }) %> 
           </div>
   
           <div class="topics">

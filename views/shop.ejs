@@ -1,4 +1,11 @@
 <div class="main-shop">
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <img src="Img/swimming-equipment.webp" alt="">
+        <div class="overlay">
+          <h1>Welcome to Our Shop</h1>
+        </div>
+      </div>
     <!-- Carousel Start -->
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">
@@ -63,74 +70,35 @@
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
         <div class="row px-xl-5">
+
+            <% if (shops.length === 0) { %>
+                <p>No items available at the moment.</p>
+            <% } else { %>
+                
+                <% shops.forEach(function(shop) { %>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="/Img/f-p-1.webp" alt="">
+                        <div class="img-fluid w-100">
+                            <%- shop.img %>
+                        </div>
+                        
                         <div class="product-action">
                             <a class="btn btn-outline-dark btn-square" href="tel:+256705164400"><i class='bx bx-cart-add'></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class='bx bx-heart'></i></a>
                         </div>
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Swim Suite</a>
+                        <a class="h6 text-decoration-none text-truncate" href=""><%= shop.name %></a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>USHs 20,000</h5><h6 class="text-muted ml-2"><del>USHs 25,000</del></h6>
+                            <h5><%= shop.newPrice %></h5><h6 class="text-muted ml-2"><del><%= shop.oldPrice %></del></h6>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="/Img/f-p-2.jpg" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="tel:+256705164400"><i class='bx bx-cart-add'></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class='bx bx-heart'></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Swim Cap</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>USHs 20,000</h5><h6 class="text-muted ml-2"><del>USHs 25,000</del></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="/Img/f-p-3.webp" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="tel:+256705164400"><i class='bx bx-cart-add'></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class='bx bx-heart'></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Swim Gaggos</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>USHs 20,000</h5><h6 class="text-muted ml-2"><del>USHs 25,000</del></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="/Img/f-p-4.jpg" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="tel:+256705164400"><i class='bx bx-cart-add'></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class='bx bx-heart'></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Hand Paddle</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>USHs 20,000</h5><h6 class="text-muted ml-2"><del>USHs 25,000</del></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <% }); %>
+            <% } %>
+            
             
         </div>
     </div>

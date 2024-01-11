@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const { Topic, Post } = require('../models/Post');
 const { Faq, Ans } = require('../models/Faq');
+const Shop = require('../models/Shop');
 const multer  = require('multer');
 const storage = multer.memoryStorage();
 
@@ -197,8 +198,11 @@ router.get('/shop', async (req, res) => {
       description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
     };
 
+    const shops = await Shop.find();
+
     res.render('shop', {
-      locals
+      locals,
+      shops
     }); 
   } catch (error) {
     console.error(error);

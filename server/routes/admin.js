@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const { Topic, Post } = require('../models/Post'); 
 const { Faq, Ans } = require('../models/Faq');
+const Shop = require('../models/Shop');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const flash = require('express-flash');
@@ -356,6 +357,274 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
     }
 });
 
+  //**
+  //GET
+ // Admin Add-topics
+ //
+ router.get('/add-topic', authMiddleware, (req, res) => {
+    const locals = {
+      title: 'Add New topic',
+      currentPage: 'add-topic',
+      layout: adminLayout,
+    };
+  
+    res.render('admin/add-topic', locals);
+  });
+  
+    //**
+    //POST
+   // Admin Create new topics
+   //
+  router.post('/add-topic', authMiddleware,  async (req, res) => {
+      try {
+        const newtopic = new Topic ({
+          name: req.body.name,
+        });
+    
+        await Topic.create(newtopic);
+        res.redirect('/topics');
+        req.flash('success', 'topic Added') // Redirect to the dashboard or other appropriate page
+      } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+  
+  
+  
+    //**
+    //GET
+   // Admin Latest-topics
+   //
+   router.get('/topics', authMiddleware, async (req, res) => {
+      try {
+          const locals = {
+              title: "Latest topics"
+          };
+  
+        const topics = await Topic.find(); // Fetch all topics from the database
+    
+        // Render the latest-topics.ejs page and pass the topics as locals
+        res.render('admin/topics', {
+          locals,
+          topics,
+          layout: adminLayout,
+          currentPage: 'topics'
+      });
+      } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+  
+  
+     //**
+    //GET
+   // Admin Edit topic
+   //
+    router.get('/edit-topic/:id', authMiddleware, async (req, res) => {
+      try {
+          const locals = {
+              title: "Edit topic"
+          };
+          
+        const topicId = req.params.id;
+        const topic = await Topic.findOne({ _id: req.params.id }); // Fetch the topic from the database
+    
+        if (!topic) {
+          return res.status(404).render('error'); // Handle not found case
+        }
+    
+        // Render the edit-topic.ejs page and pass the topic as locals
+        res.render('admin/edit-topic', { 
+          topic,
+          locals,
+          layout: adminLayout,
+          currentPage: 'edit-topic'
+      });
+      } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).json({ error: 'Internal server error' });
+      }
+  });
+  
+    router.post('/edit-topic/:id', authMiddleware, async (req, res) => {
+      try {
+        const topicId = req.params.id;
+        const topic = await Topic.findById(topicId); // Fetch the topic from the database
+    
+        // Update the topic properties
+        topic.name = req.body.name;
+    
+        await topic.save(); // Save the updated topic
+    
+        res.redirect('/topics');
+        req.flash('success', 'topic Updated'); // Redirect to the latest-topics page
+      } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+  
+  
+     //**
+    //DELETE
+   // Admin Delete topics
+   //
+    router.delete('/delete-topic/:id', authMiddleware, async (req, res) => {
+      try {
+        const topicId = req.params.id;
+        const topic = await Topic.findById(topicId); // Fetch the topic from the database
+    
+        if (!topic) {
+          return res.status(404).json({ error: 'topic not found' });
+        }
+    
+        await Topic.deleteOne( { _id: req.params.id }); // Remove the topic from the database
+    
+        res.redirect('/topics');
+        req.flash('success', 'topic Deleted') // Redirect to the latest-topics page after deletion
+      } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+
+     //**
+  //GET
+ // Admin Add shops
+ //
+ router.get('/add-shop', authMiddleware, (req, res) => {
+    const locals = {
+        title: 'Add shop',
+        currentPage: 'add-shop',
+        layout: adminLayout,
+      };
+    res.render('Admin/add-shop', locals); // Replace with your actual view name
+});
+
+//**
+  //POST
+ // Admin Add shops
+ //
+ router.post('/add-shop', authMiddleware, upload.single('image'), async (req, res) => {
+    try {
+      const newShop = new Shop ({
+        name: req.body.name,
+        description: req.body.description,
+        newPrice: req.body.newPrice,
+        oldPrice: req.body.oldPrice,
+        img: req.body.img
+      });
+  
+      await Shop.create(newShop);
+      res.redirect('/my-shops');
+      req.flash('success', 'Shop Added')// Redirect to the dashboard or other appropriate page
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+
+
+//**
+  //GET 
+ // Admin Shops
+ //
+ router.get('/my-shops', authMiddleware, async (req, res) => {
+    try {
+        const shops = await Shop.find();
+        const locals = {
+            shops: shops,
+            title: 'My Shops',
+            currentPage: 'my-shops',
+            layout: adminLayout,
+        };
+        res.render('Admin/my-shops', locals);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+router.get('/edit-shop/:id', authMiddleware, async (req, res) => {
+    try {
+        const locals = {
+            title: 'Edit Shop',
+            description: 'Add a new shop to your Project.',
+        };
+
+        const shop = await Shop.findOne({ _id: req.params.id });
+
+        res.render('Admin/edit-shop', { 
+            locals,
+            shop,
+            currentPage: 'edit-shop',
+            layout: adminLayout,
+         });
+    } catch (error) {
+        console.error(error);
+        // Handle error response
+        res.status(500).render( { error: 'Internal server error' });
+    }
+});
+
+router.post('/edit-shop/:id', authMiddleware, upload.single('image'),  async (req, res) => {
+    try {
+      const shopId = req.params.id;
+      const shop = await Shop.findById(shopId);
+  
+      // Update the shop properties
+      shop.shop.name = req.body.name;
+      shop.description = req.body.description;
+      shop.newPrice = req.body.newPrice;
+      shop.oldPrice = req.body.oldPrice;
+      shop.img = req.body.img;
+  
+      await shop.save(); // Save the updated shop
+  
+      res.redirect('/my-shops'); 
+      req.flash('success', 'Shop edited');// Redirect to the latest-shops page
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+     //**
+  //DELETE
+ // Admin Delete projects
+ //
+ router.delete('/delete-shop/:id', authMiddleware, async (req, res) => {
+    try {
+      const shopId = req.params.id;
+      const shop = await Shop.findById(shopId); // Fetch the shop from the database
+  
+      if (!shop) {
+        return res.status(404).json({ error: 'shop not found' });
+      }
+  
+      await shop.deleteOne( { _id: req.params.id }); // Remove the shop from the database
+  
+      res.redirect('/my-shops');
+      req.flash('success', 'Shop Deleted'); // Redirect to the latest-shops page after deletion
+    } catch (error) {
+      console.error(error);
+      // Handle error response
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+
 /**
  * GET
  * Admin Logout
@@ -544,7 +813,6 @@ router.post('/create-user', authMiddleware, async (req, res) => {
       });
   
       await Faq.create(newfaq);
-      console.log(newfaq);
       res.redirect('/faq');// Redirect to the dashboard or other appropriate page
     } catch (error) {
       console.error(error);
@@ -622,7 +890,7 @@ router.post('/create-user', authMiddleware, async (req, res) => {
       faq.ans = req.body.ans;
       faq.description = req.body.description;
   
-      await Faq.save();
+      await faq.save();
   
       res.redirect('/faq');
     } catch (error) {

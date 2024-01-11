@@ -1,62 +1,59 @@
 <div id="top"></div>
 <header class="header">
-    <!-- Top Section -->
-    <div class="top-section">
-      <div class="top-section-nav">
-        <div class="top-section-nav-item language-dropdown">
-            <!-- Language Dropdown -->
-            <select>
-              <option value="en-us" selected>English (US)</option>
-              <!-- <option value="fr">French</option> -->
-            </select>
-          </div>
-          <!-- <div class="top-section-nav-item sign-in-button">
-            <button>Sign In</button>
-          </div> -->
+  <!-- Top Section -->
+  <div class="top-section">
+    <div class="top-section-nav">
+      <div class="top-section-nav-item language-dropdown">
+          <!-- Language Dropdown -->
+          <select>
+            <option value="en-us" selected>English (US)</option>
+            <!-- <option value="fr">French</option> -->
+          </select>
       </div>
+        <div class="top-section-nav-item sign-in-button">
+          <button><a href="/login">Sign In</a></button>
+        </div>
     </div>
+  </div>
 
-    <nav-bar class="main-header">
+  <nav-bar class="main-header">
 
-      <!-- Bottom Section -->
-      <div class="bottom-section admin">
-        <div class="logo">
-          <p>Mr.FISHWORLD</p>
-        </div>
-            
-        <div class="menu">
-          <i class='bx bx-menu'></i>
-        </div>
-
-        <!-- Navigation Links -->
-        <ul class="main-nav">
-          <% if (currentPage === 'login') { %>
-            <div class=" ">
-                <a href="register">
-                    <button class="btn-blue">
-                        Sign Up
-                    </button>
-                </a>
-            </div>
-        <% } else if (currentPage === 'register') { %>
-            <div class=" ">
-                <a href="login">
-                    <button class="btn-blue">
-                        Sign In
-                    </button>
-                </a>
-            </div>
-        <% } else if (currentPage === 'dashboard' || currentPage === 'add-post' || currentPage === 'add-project'|| currentPage === 'add-service'|| currentPage === 'create-user'|| currentPage === 'edit-post'|| currentPage === 'edit-project'|| currentPage === 'edit-service'|| currentPage === 'edit-user'|| currentPage === 'latest-projects'|| currentPage === 'my-services'|| currentPage === 'users') { %>
-            <div class=" ">
-                <a href="/logout">
-                    <button class="btn-blue">
-                        Sign Out
-                    </button>
-                </a>
-            </div>
-        <% } %>
-
-        </ul>
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <div class="logo">
+        <p>SWIMWORLD</p>
       </div>
-    </nav-bar>
+          
+      <div class="menu">
+        <i class='bx bx-menu'></i>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="main-nav">
+
+        <% if (currentPage === 'login') { %>
+          <button class="btn-header">
+              <a href="register">
+                Sign Up
+              </a>
+          </button>
+      <% } else if (currentPage === 'register') { %>
+          <button class="btn-header">
+              <a href="login">
+                Sign In
+              </a>
+          </button>
+      <% } else if (currentPage === 'dashboard' || currentPage === 'add-post' || currentPage === 'add-project'|| currentPage === 'add-service'|| currentPage === 'create-user'|| currentPage === 'edit-post'|| currentPage === 'edit-project'|| currentPage === 'edit-service'|| currentPage === 'edit-user'|| currentPage === 'latest-projects'|| currentPage === 'my-services'|| currentPage === 'users') { %>
+          <button class="btn-header">
+              <a href="/logout">
+                Sign Out
+              </a>
+          </button>
+      <% } %>
+
+      </ul>
+
+
+    </div>
+  </nav-bar>
 </header>

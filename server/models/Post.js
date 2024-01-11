@@ -21,7 +21,7 @@ const PostSchema = new Schema({
         required: Boolean,
     },
     body: {
-        type: String,
+        type: [String],
         required: Boolean,
     },
     preview: {
