@@ -1357,8 +1357,8 @@ form .input-box {
 .bxl-twitter {
   color: var(--MAIN-COLOR);
 }
-.bxl-youtube {
-  color: #CD201F;
+.bxl-tiktok {
+  color: #fff;
 }
 .bxl-linkedin {
   color: #CD201F;
@@ -1503,14 +1503,17 @@ form .input-box {
   background: var(--SECOND-BG-COLOR);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 1em;
+  padding-bottom: 1em;
   text-align: center;
+}
+
+.team-member .svg {
+  background-color: transparent;
+  margin-top: -5em;
 }
 
 .team-member img {
   max-width: 100%;
-  border-radius: 50%;
-  margin-bottom: 10px;
 }
 
 .team-member h4 {
@@ -1863,6 +1866,38 @@ form .input-box {
   text-decoration: none;
 }
 
+/* Enquiery */
+.enquiry-form {
+  width: 600px;
+  margin: 3em auto;
+}
+
+.enquiry-form form {
+  display: grid;
+  grid-template-columns: 100%;
+  align-items: center;
+}
+
+.enquiry-form .input-box.middle {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 4%;
+}
+
+.enquiry-form input, .enquiry-form textarea {
+  padding: 1em;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  background-color: gray;
+  width: 100%;
+}
+
+.enquiry-form input::placeholder {
+  color: #fff;
+}
+
+
 
 /* Responsive Styles */
 @media (max-width:1000px) {
@@ -2102,6 +2137,14 @@ form .input-box {
   .form-container {
     min-width: 240px;
     margin: auto 1em;
+  }
+
+  .enquiry-form {
+    width: 90%;
+  }
+
+  .enquiry-form .input-box.middle {
+    grid-template-columns: 100%;
   }
 }
 

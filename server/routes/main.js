@@ -82,6 +82,37 @@ router.post('/send-email', async (req, res) => {
     }
 });
 
+router.post('/send-email-2', async (req, res) => {
+  const { name, phone, email, lessonDay, comment } = req.body;
+
+  // Create a nodemailer transporter
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'asiomizunoah@gmail.com',
+        pass: 'sjkk bqkf pedt utvb'
+    }
+  });
+
+  // Email options
+  const mailOptions = {
+      from: email,
+      to: 'phinicxd@gmail.com',  // Your email
+      subject: 'Enquiry from SWIMWORLD',
+      text: `
+          Name: ${name}\nPNumber: ${phone}\nEmail: ${email}\nComment: ${comment}`
+  };
+
+  try {
+      // Send the email
+      await transporter.sendMail(mailOptions);
+      res.redirect('/');
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Error sending email');
+  }
+});
+
 
 /**
  * GET /
@@ -212,6 +243,24 @@ router.get('/shop', async (req, res) => {
   
 });
 
+router.get('/enquiry', async (req, res) => {
 
+  try {
+
+    const locals = {
+      title: 'Enquiry',
+      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+    };
+
+    res.render('enquiry', {
+      locals
+    }); 
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+    res.status(500).json({ error: 'Third  server error' });
+  }
+  
+});
 
 module.exports = router;
