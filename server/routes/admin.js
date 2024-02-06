@@ -90,14 +90,14 @@ router.post('/admin/login', async (req,  res) => {
         const user = await User.findOne({username});
         if(!user) {
             req.flash('error', 'Invalid credentials')
-            return res.redirect('/admin/login')
+            return res.redirect('/login')
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if(!isPasswordValid) {
             req.flash('error', 'Invalid credentials')
-            return res.redirect('/admin/login')
+            return res.redirect('/login')
         }
 
         const token = jwt.sign({ userId: user._id}, jwtSecret);
@@ -368,7 +368,10 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
       layout: adminLayout,
     };
   
-    res.render('admin/add-topic', locals);
+    res.render('admin/add-topic', {
+      locals,
+      currentPage: 'add-topic',
+    });
   });
   
     //**

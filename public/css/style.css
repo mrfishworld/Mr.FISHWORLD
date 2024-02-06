@@ -2330,7 +2330,8 @@ form button {
 /* Add Posts */
 
 .admin_wrapper .admin-content .content form.add-post label {
-  font-size: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.2em;
 }
 
 .admin_wrapper .admin-content .content form.add-post input.text-input {
