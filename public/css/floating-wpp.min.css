@@ -39,7 +39,7 @@
 .floating-wpp .floating-wpp-popup {
     /*border: 2px solid white;*/
     border-radius: 15px;
-    background-color: var(--BG-COLOR);
+    background-color: rgb(28, 218, 28);
     position: absolute;
     overflow: hidden;
     padding: 0;
