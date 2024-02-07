@@ -701,7 +701,7 @@ router.post('/edit-user/:id', authMiddleware, async (req, res) => {
         if (!user) {
             return res.status(404).render(error); // or handle as you prefer
         }
-
+ 
         user.username = username;
         user.email = email;
         user.isAdmin = isAdmin === 'true';
