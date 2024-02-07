@@ -264,3 +264,59 @@ function submitForm() {
     }
 });
     
+$('.owl-carousel').owlCarousel({
+  loop: true,
+  margin: 29,
+  nav: false,
+  dots: false,
+  autoplay: true,
+  smartSpeed: 1000,
+  animateOut: 'fadeOut', 
+  animateIn: 'fadeIn', 
+  responsive: {
+      0:{
+          items:1
+      },
+      576:{
+          items:1
+      },
+      768:{
+          items:1
+      },
+      992:{
+          items:1
+      },
+      1200:{
+          items:1
+      }
+  }
+});
+
+ // Add event listener for scroll
+ window.addEventListener('scroll', function () {
+  // Get the current scroll position
+  const scrollPosition = window.scrollY;
+
+  // Get all post-info elements
+  const postInfos = document.querySelectorAll('.post-info');
+
+  // Loop through each post-info element
+  postInfos.forEach(function (postInfo, index) {
+      // Get the offsetTop of the post-info element
+      const postInfoOffsetTop = postInfo.offsetTop;
+
+      // Check if the post-info element is approximately in the middle of the screen
+      if (
+          scrollPosition >= postInfoOffsetTop - (window.innerHeight / 2) &&
+          scrollPosition < postInfoOffsetTop + postInfo.offsetHeight - (window.innerHeight / 2)
+      ) {
+          // Remove the 'active' class from all post-info elements
+          postInfos.forEach(function (p) {
+              p.classList.remove('active');
+          });
+
+          // Add the 'active' class to the current post-info element
+          postInfo.classList.add('active');
+      }
+  });
+});
