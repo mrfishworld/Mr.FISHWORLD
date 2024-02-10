@@ -32,7 +32,7 @@ router.get('', async (req, res) => {
   try {
     const locals = {
       title: "SWIMWORLDUg",
-      description: "We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc."
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     }
     
 
@@ -124,7 +124,7 @@ router.get('/about', async (req, res) => {
 
     const locals = {
       title: 'About',
-      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
     res.render('about', {
@@ -149,7 +149,7 @@ router.get('/tutorials', async (req, res) => {
 
     const locals = {
       title: 'Tutorials',
-      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
     res.render('tutorials', {
@@ -173,7 +173,7 @@ router.get('/blogs', async (req, res) => {
 
     const locals = {
       title: 'Blogs',
-      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
     const popularPosts = await fetchPopularPosts();
@@ -226,7 +226,7 @@ router.get('/shop', async (req, res) => {
 
     const locals = {
       title: 'Shop',
-      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
     const shops = await Shop.find();
@@ -249,7 +249,7 @@ router.get('/enquiry', async (req, res) => {
 
     const locals = {
       title: 'Enquiry',
-      description: 'We offer professional swimming career guide and knowledge, private  swimming lessons for adults and children, schools  swimming events  galas, swimming competitions etc. swimming equipments and medical  swimming therapies such as fitness,  weightloss,  autism therapy,  stroke etc.'
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
     res.render('enquiry', {
