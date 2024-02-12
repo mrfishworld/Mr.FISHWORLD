@@ -8,6 +8,8 @@
 :root {
   --MAIN-COLOR:#1DA1F2 ;
   --HEADER-FOOTER: #1F51FF;
+  --YELLOW: #FFFF00;
+  --WHITE: #FFFFFF;
 }
 
 html {
@@ -2237,6 +2239,10 @@ form .input-box {
 @media (max-width:550px) {
   .hero .overlay h1 {
     font-size: 2.3rem;
+  }
+
+  #popup {
+    width: 70%;
   }
 
 .form-container {
