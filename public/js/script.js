@@ -297,16 +297,19 @@ function submitForm() {
 
 /* Pop up */
 
-window.addEventListener('scroll', function() {
+window.addEventListener('load', function() {
   var swimmingCoursesSection = document.getElementById('swimming-courses');
   var popup = document.getElementById('popup');
 
   var rect = swimmingCoursesSection.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom >= 0) {
+  var popupShown = sessionStorage.getItem('popupShown');
+
+  if (rect.top < window.innerHeight && rect.bottom >= 0 && !popupShown) {
     // Show popup animation
     popup.style.display = 'block';
     // You can customize the animation here, e.g., fadeIn
     popup.classList.add('fadeIn');
+    sessionStorage.setItem('popupShown', 'true');
   } else {
     // Hide popup animation
     popup.style.display = 'none';
@@ -316,7 +319,10 @@ window.addEventListener('scroll', function() {
 
 document.getElementById('close-btn').addEventListener('click', function() {
   document.getElementById('popup').style.display = 'none';
+  sessionStorage.removeItem('popupShown'); // Remove the flag when the popup is closed
 });
+
+
 
 
       
