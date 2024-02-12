@@ -294,3 +294,30 @@ function submitForm() {
       }
   });
 });
+
+/* Pop up */
+
+window.addEventListener('scroll', function() {
+  var swimmingCoursesSection = document.getElementById('swimming-courses');
+  var popup = document.getElementById('popup');
+
+  var rect = swimmingCoursesSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom >= 0) {
+    // Show popup animation
+    popup.style.display = 'block';
+    // You can customize the animation here, e.g., fadeIn
+    popup.classList.add('fadeIn');
+  } else {
+    // Hide popup animation
+    popup.style.display = 'none';
+    popup.classList.remove('fadeIn');
+  }
+});
+
+document.getElementById('close-btn').addEventListener('click', function() {
+  document.getElementById('popup').style.display = 'none';
+});
+
+
+      
+  
