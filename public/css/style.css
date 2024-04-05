@@ -286,6 +286,15 @@ form .input-box {
   padding: 0 10%;
 }
 
+.single .hero .overlay {
+  top: 50%;
+}
+
+.single .hero .overlay h1{
+  font-size: 2.5rem;
+  text-align: center;
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -1925,6 +1934,138 @@ form .input-box {
 .topics h3 a:hover {
   text-decoration: none;
 }
+
+.main-blog {
+  background: var(--MAIN-COLOR);
+}
+
+.content-box {
+  position: relative;
+  width: 80%;
+  margin: -5em auto 3em auto;
+  background: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.212);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+}
+
+.content-box .content {
+padding: 2em;
+display: flex;
+flex-flow: column nowrap;
+align-items: center;
+}
+
+.disclaimer {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 0 5%;
+  color: #111010;
+}
+
+.disclaimer h2 {
+  margin-bottom: 1em;
+}
+
+.disclaimer p {
+  text-align: center;
+}
+/* Terms and Conditions */
+/* About Page */
+.featured-projects.abt-page {
+  margin-top: 3em;
+}
+
+.service-menu {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.service-menu li {
+  cursor: pointer;
+  color: yellow;
+  margin: 2px 2px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  background-color: var(--MAIN-COLOR);
+  transition: background-color 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.212);
+}
+
+.service-menu li.active {
+  background-color: #fff; /* Active menu item background color */
+  color: var(--HEADER-FOOTER); /* Active menu item text color */
+}
+
+.project-details.aboutus h3 {
+  color: var(--HEADERLINKS-COLOR-HOVER);
+  margin-bottom: 0.7em;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.project-details.aboutus p {
+  text-align: left;
+  color: var(--BODY-TEXT-COLOR);
+}
+
+.project-details.aboutus ul {
+  margin-left: 4rem;
+}
+
+
+.main-content .intro-aboutus {
+  margin-top: 3em;
+  width: 100%;
+  padding: 1em;
+  border: none;
+  background-color:var(--HEADERLINKS-COLOR);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: aliceblue;
+}
+
+.main-content .intro-aboutus h2 {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+
+.section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3em 2%;
+}
+
+.section .article {
+  margin-bottom: 1em;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section .article:hover {
+  transform: scale(1.02);
+}
+
+.section .article h2.heading {
+  margin-bottom: 1em;
+  text-align: center;
+  color: var(--HEADERLINKS-COLOR-HOVER);
+}
+
+.section .article p {
+  text-align: left;
+}
+
 
 /* Enquiery */
 .enquiry-form {

@@ -263,4 +263,25 @@ router.get('/enquiry', async (req, res) => {
   
 });
 
+// Get Ts and Cs
+router.get('/terms', async (req, res) => {
+
+  try {
+
+    const locals = {
+      title: 'Terms and Conditions',
+      description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
+    };
+
+    res.render('terms', {
+      locals
+    }); 
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+    res.status(500).json({ error: 'Third  server error' });
+  }
+  
+});
+
 module.exports = router;

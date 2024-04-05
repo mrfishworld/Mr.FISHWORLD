@@ -202,6 +202,42 @@ function submitFormAdult() {
   closeFormAdult();
 }
 
+// Consent
+// Enable submit button when terms checkbox is checked
+document.getElementById('termsCheckbox').addEventListener('change', function() {
+  var submitButton = document.getElementById('submitButton');
+  submitButton.disabled = !this.checked;
+  if (this.checked) {
+    submitButton.classList.remove('disabled');
+  } else {
+    submitButton.classList.add('disabled');
+  }
+});
+
+// Consent
+// Enable submit button when terms checkbox is checked
+document.getElementById('termsCheckbox2').addEventListener('change', function() {
+  var submitButton = document.getElementById('submitButton2');
+  submitButton.disabled = !this.checked;
+  if (this.checked) {
+    submitButton.classList.remove('disabled');
+  } else {
+    submitButton.classList.add('disabled');
+  }
+});
+
+// Consent
+// Enable submit button when terms checkbox is checked
+document.getElementById('termsCheckbox3').addEventListener('change', function() {
+  var submitButton = document.getElementById('submitButton3');
+  submitButton.disabled = !this.checked;
+  if (this.checked) {
+    submitButton.classList.remove('disabled');
+  } else {
+    submitButton.classList.add('disabled');
+  }
+});
+
 /* Overlay Form Kid */
 function openFormKid() {
   document.getElementById("plan-kid").style.display = "flex";
