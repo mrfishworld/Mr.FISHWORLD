@@ -12,6 +12,8 @@ const storage = multer.memoryStorage();
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 const upload = multer({
     storage: storage,
@@ -46,9 +48,7 @@ router.get('/login', async (req,  res) => {
         }
     
         res.render('admin/login', { 
-            locals, 
-            layout: adminLayout,
-            currentPage: 'login'
+            locals
         });
     } catch (error) {
         console.log('error');
@@ -68,9 +68,7 @@ router.get('/register', async (req,  res) => {
         }
     
         res.render('admin/register', { 
-            locals, 
-            layout: adminLayout,
-            currentPage: 'register'
+            locals
         });
     } catch (error) {
         console.log('error');
@@ -137,6 +135,154 @@ const authMiddleware = async (req, res, next) => {
         return res.redirect('/'); // Redirect unauthorized users to index.ejs
     }
 };
+
+//FORGOT PASSWORD
+// Define nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'asiomizunoah@gmail.com',
+    pass: 'sjkk bqkf pedt utvb' // Replace with your Gmail password
+  }
+});
+
+/**
+ * GET
+ * Forgot password page
+ */
+router.get('/forgot-password', async (req, res) => {
+
+  const locals = {
+    title: "Forgot Password"
+  }
+  try {
+    res.render('admin/forgot-password', {
+      locals,
+      currentPage: 'forgot-password'
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+/**
+ * POST
+ * Forgot password form submission
+ */
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Find user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      req.flash('error', 'User with this email does not exist');
+      return res.redirect('/forgot-password');
+    }
+
+    // Generate and set reset token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpires = new Date(Date.now() + 3600000); // 1 hour expiration
+
+    // Save user with token (ensure asynchronous save completes)
+    await user.save();
+
+    // Prepare encoded reset link
+    const encodedToken = encodeURIComponent(resetToken);
+    const resetLink = `http://${req.headers.host}/reset-password/${encodedToken}`;
+
+    // Send password reset email
+    const mailOptions = {
+      from: 'asiomizunoah@gmail.com', // Consider using a dedicated email address for security
+      to: email,
+      subject: 'Reset your password',
+      html: `
+        <p>You are receiving this because you (or someone else) have requested the reset of the password for your account.</p>
+        <p>Please click on the following link, or paste this into your browser to complete the process:</p>
+        <p><a href="${resetLink}">Reset Password</a></p>
+        <p>If you did not request this, please ignore this email and your password will remain unchanged.</p>
+      `
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    req.flash('success', 'Password reset email sent');
+    res.redirect('/forgot-password');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+/**
+ * GET
+ * Reset password page
+ */
+router.get('/reset-password/:token', async (req, res) => {
+
+  const locals = {
+    title: "Reset Password"
+  }
+
+  try {
+    const { token } = req.params;
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired');
+      return res.redirect('/forgot-password');
+    }
+
+    res.render('admin/reset-password', {
+      locals,
+      currentPage: 'reset-password',
+      token
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+/**
+ * POST
+ * Reset password form submission
+ */
+router.post('/reset-password/:token', async (req, res) => {
+  try {
+    const { token } = req.params;
+    const { password } = req.body;
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired');
+      return res.redirect('/forgot-password');
+    }
+
+    // Reset password and remove reset token
+    user.password = await bcrypt.hash(password, 10);
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+    await user.save();
+
+    req.flash('success', 'Password reset successfully');
+    res.redirect('/login');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+//FORGOT PASSWORD
 
 
 

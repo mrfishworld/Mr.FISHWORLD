@@ -235,6 +235,9 @@ form fieldset {
 }
 
 form .input-box {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5em;
   margin-left: 0.5em;
 }
 
@@ -2456,6 +2459,14 @@ align-items: center;
 .disclaimer {
   padding: 0 1%;
 }
+
+.auth-content.contact form {
+  margin: 3em 2%;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+
+}
 }
 
 @media (max-width:414px) {
@@ -2513,6 +2524,8 @@ align-items: center;
 
 
 .auth-content.contact form {
+  margin: 3em auto;
+  max-width: 500px;
   padding: 1em 2em;
   border: 1px solid var(--MAIN-COLOR);
   border-radius: 5px;
