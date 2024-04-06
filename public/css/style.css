@@ -245,7 +245,7 @@ form .input-box {
 
 }
 
-.form-container input, .form-container select {
+.form-container fieldset input, .form-container fieldset select {
   padding: 3px;
   margin-bottom: 10px;
   box-sizing: border-box;
@@ -263,6 +263,9 @@ form .input-box {
   width: 100px;
   margin: 0.5em auto;
 }
+
+
+
 
 /* Hero */
 .hero {
@@ -287,7 +290,7 @@ form .input-box {
 }
 
 .single .hero .overlay {
-  top: 50%;
+  top: 40%;
 }
 
 .single .hero .overlay h1{
@@ -2378,6 +2381,10 @@ align-items: center;
   .enquiry-form .input-box.middle {
     grid-template-columns: 100%;
   }
+
+  .single .hero .overlay {
+    top: 30%;
+  }
 }
 
 @media (max-width:570px) {
@@ -2396,7 +2403,7 @@ align-items: center;
     width: 100%;
   }
 
-  .form-container input, .form-container select {
+  .form-container fieldset input, .form-container fieldset select {
     width: 85%;
   }
 
@@ -2436,6 +2443,18 @@ align-items: center;
 .footer .middle-section .contacts {
   margin-top: 2em;
   text-align: center;
+}
+
+.content-box {
+  width: 90%;
+}
+
+.content-box .content {
+  padding: 1em 0.5em;
+}
+
+.disclaimer {
+  padding: 0 1%;
 }
 }
 
