@@ -10,7 +10,7 @@
         </div>
     </div>
     
-    <section class="about">
+    <!-- <section class="about">
         <div class="instructor-content">
            <div class="instructor-text">
             <h1>Welcome to <span>SWIMWORLDUG</span> Blogs</h1>
@@ -19,9 +19,9 @@
         </div>
       
         
-      </section>
+      </section> -->
 
-  <!-- <div class="blog-wrapper">
+  <div class="blog-wrapper">
       <div class="blogs">
           <div class="trending-post">
               <h2 class="trending">Most Recent Posts</h1>
@@ -34,7 +34,7 @@
                         <% popularPosts.forEach(popularPost => { %>
                           <div class="post">
                               <div class="img">
-                                  <%- popularPost.img %>
+                                <img src="data:<%= popularPost.image.contentType %>;base64,<%= popularPost.image.data.toString('base64') %>" alt="">
                               </div>
                               <div class="post-info">
                                   <div class="topic">
@@ -61,7 +61,7 @@
             <% data.forEach(post => { %>
               <div class="post">
                   <div class="img">
-                      <%- post.img %>
+                    <img src="data:<%= post.image.contentType %>;base64,<%= post.image.data.toString('base64') %>" alt="">
                   </div>
                   <div class="post-info">
                       <div class="topic">
@@ -91,7 +91,7 @@
               </div>
   
               <div class="next">
-                  <a href="/?page=<%= nextPage %>"><i class='bx bx-skip-next'>Next Page</i></a>
+                  <a href="/blogs?page=<%= nextPage %>"><i class='bx bx-skip-next'>Next Page</i></a>
               </div>
           </div>
           
@@ -104,7 +104,7 @@
               <% popularPosts.forEach(popularPost => { %>
               <div class="popular-post">
                   <div class="img">
-                    <%- popularPost.img %>
+                    <img src="data:<%= popularPost.image.contentType %>;base64,<%= popularPost.image.data.toString('base64') %>" alt="">
                   </div>
           
                   <div class="popular-post-info">
@@ -129,4 +129,4 @@
           </div>
       </div>
   
-  </div> -->
+  </div>

@@ -4,23 +4,24 @@ const Schema = mongoose.Schema;
 const ShopSchema = new Schema({
     name: {
         type: String,
-        required: true, // Fix: Change `Boolean` to `true`
+        required: Boolean, // Fix: Change `Boolean` to `Boolean`
     },
     description: {
         type: String,
-        required: true, // Fix: Change `Boolean` to `true`
+        required: Boolean, // Fix: Change `Boolean` to `Boolean`
     },
     newPrice: {
         type: String,
-        required: true, // Fix: Change `Boolean` to `true`
+        required: Boolean, // Fix: Change `Boolean` to `Boolean`
     },
     oldPrice: {
         type: String,
-        required: true, // Fix: Change `Boolean` to `true`
+        required: Boolean, // Fix: Change `Boolean` to `Boolean`
     },
-    img: {
-        type: String,
-        required: true, // Fix: Change `Boolean` to `true`
+    image: {
+        data: Buffer, 
+        contentType: String, 
+        required: Boolean, // Fix: Change `Boolean` to `true`
     }
 });
 

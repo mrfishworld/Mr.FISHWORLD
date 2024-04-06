@@ -27,7 +27,7 @@
             
             <form action="/add-post" method="POST" enctype="multipart/form-data" class="add-post">
 
-                <div>
+                <div class="input-box">
                     <label for="topic">Topic</label>
                     <select name="topic" class="select-input">
                         <% topics.forEach(topic => { %>
@@ -36,33 +36,33 @@
                     </select>
                 </div>
 
-                <div>
-                    <label for="body">Post Image (Only select image)</label>
-                    <textarea name="img" id="mytextarea" cols="50" rows="10"></textarea>
+                <div class="input-box">
+                    <label for="body">Post description</label>
+                    <textarea name="description" id="" cols="50" rows="10"></textarea>
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="text-input">
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="preview">Preview</label>
                     <textarea name="preview" id="body" cols="50" rows="5" maxlength="150" ></textarea>
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="body">Body</label>
                     <textarea name="body" id="mytextarea" cols="50" rows="10"></textarea>
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="image">Image</label>
                     <input type="file" name="image" id="img-input" class="text-input">
                 </div>
               
                 <div>
-                    <button type="submit" class="btn">Add Post</button>
+                    <button type="submit" class="btn btn-primary">Add Post</button>
                 </div>
             </form>
 

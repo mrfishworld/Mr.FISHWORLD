@@ -390,7 +390,7 @@ router.post('/add-post', authMiddleware, upload.single('image'), async (req,  re
     
             const newPost = new Post({
                 topic: req.body.topic,
-                img: req.body.img,
+                description: req.body.description,
                 title: req.body.title,
                 preview: req.body.preview,
                 body: req.body.body,
@@ -473,7 +473,7 @@ router.put('/edit-post/:id', authMiddleware, upload.single('image'), async (req,
         await Post.findByIdAndUpdate(req.params.id, {
 
             topic: req.body.topic,
-            img: req.body.img,
+            description: req.body.description,
             title: req.body.title,
             preview: req.body.preview,
             body: req.body.body,
@@ -663,12 +663,18 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
  //
  router.post('/add-shop', authMiddleware, upload.single('image'), async (req, res) => {
     try {
+
+      const imageObject = {
+        data: req.file.buffer,
+        contentType: req.file.mimetype
+      };
+
       const newShop = new Shop ({
         name: req.body.name,
         description: req.body.description,
         newPrice: req.body.newPrice,
         oldPrice: req.body.oldPrice,
-        img: req.body.img
+        image: imageObject
       });
   
       await Shop.create(newShop);
@@ -728,17 +734,21 @@ router.get('/edit-shop/:id', authMiddleware, async (req, res) => {
 
 router.post('/edit-shop/:id', authMiddleware, upload.single('image'),  async (req, res) => {
     try {
-      const shopId = req.params.id;
-      const shop = await Shop.findById(shopId);
-  
-      // Update the shop properties
-      shop.shop.name = req.body.name;
-      shop.description = req.body.description;
-      shop.newPrice = req.body.newPrice;
-      shop.oldPrice = req.body.oldPrice;
-      shop.img = req.body.img;
-  
-      await shop.save(); // Save the updated shop
+      const imageObject = {
+        data: req.file.buffer,
+        contentType: req.file.mimetype
+    };
+
+      await Shop.findByIdAndUpdate(req.params.id, {
+
+        name: req.body.name,
+        description: req.body.description,
+        newPrice: req.body.newPrice,
+        oldPrice: req.body.oldPrice,
+        image: imageObject
+    });
+
+    res.redirect('/dashboard');
   
       res.redirect('/my-shops'); 
       req.flash('success', 'Shop edited');// Redirect to the latest-shops page

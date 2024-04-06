@@ -32,29 +32,29 @@
            
             <form action="/edit-shop/<%= shop._id %>" method="post"  class="add-post">
 
-                <div>
+                <div class="input-box">
                     <label for="name">Name</label>
                     <input type="text" name="name" class="text-input" value="<%= shop.name %>">
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="description">Description</label>
                     <textarea name="description" id="body" cols="50" rows="5"><%= shop.description %></textarea>
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="oldPrice">Old Price</label>
                     <input type="text" name="oldPrice" class="text-input" value="<%= shop.oldPrice %>">
                 </div>
 
-                <div>
+                <div class="input-box">
                     <label for="newPrice">New Price</label>
                     <input type="text" name="newPrice" class="text-input" value="<%= shop.newPrice %>">
                 </div>
 
-                <div>
-                    <label for="img">Pictre ofItem</label>
-                    <textarea name="img" id="mytextarea" cols="50" rows="5"><%= shop.img %></textarea>
+                <div class="input-box">
+                    <label for="image">Image of item</label>
+                    <input type="file" name="image" id="img-input" class="text-input">
                 </div>
               
                 <div>

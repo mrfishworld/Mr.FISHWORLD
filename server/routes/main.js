@@ -180,7 +180,7 @@ router.get('/blogs', async (req, res) => {
     
     const faqs = await Faq.find(); 
 
-    let perPage = 10;
+    let perPage = 6;
     let page = req.query.page || 1;
 
     const data = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
@@ -205,8 +205,7 @@ router.get('/blogs', async (req, res) => {
       data,
       topics,
       popularPosts,
-      current: page,
-      nextPage: hasNextPage ? nextPage : null
+      nextPage: hasNextPage ? nextPage : null,
     }); 
   } catch (error) {
     console.error(error);

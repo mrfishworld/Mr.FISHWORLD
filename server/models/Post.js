@@ -16,7 +16,7 @@ const PostSchema = new Schema({
         type: String,
         required: Boolean,
     },
-    img: {
+    description: {
         type: String,
         required: Boolean,
     },
