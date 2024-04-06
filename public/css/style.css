@@ -1992,6 +1992,64 @@ align-items: center;
 .disclaimer p {
   text-align: center;
 }
+
+/* Followus on sociala */
+.social-media {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.social-media h2 {
+  margin-top: 1em;
+}
+
+.social-media-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.social-media-button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.social-media a:hover {
+  text-decoration: none;
+}
+
+.twitter {
+  background-color: #0c8ddd; /* Twitter blue */
+}
+
+.linkedin {
+  background-color: #0077B5; /* LinkedIn blue */
+}
+
+.tiktok {
+  background-color: #000000; /* TikTok black */
+}
+
+.facebook {
+  background-color: #3b5998; /* Facebook blue */
+}
+
+.social-media-button i {
+  margin-right: 5px;
+}
+
+/* Blogs end */
+
+
 /* Terms and Conditions */
 /* About Page */
 .featured-projects.abt-page {
@@ -2086,6 +2144,250 @@ align-items: center;
   text-align: left;
 }
 
+/* terms and conditions */
+
+/* ---SINGLE POST---- */
+.main-content.single {
+  padding: 0.5em 5%;
+} 
+
+.content .main-content.single .single-post {
+  border-radius: 7px;
+  margin-top: 3em;
+  font-size: 1rem;
+  min-height: 340px;
+  box-shadow: 2rem 2rem 2rem -2rem var(--SECOND-MAIN-COLOR);
+  background: var(--SECOND-MAIN-COLOR);
+}
+
+.main-content.single .post-title {
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.main-content.single .author {
+  margin: 1em 0 2em 0;
+}
+
+.main-content.single span i {
+  color: var(--HEADER-FOOTER);
+}
+
+.main-content.single img {
+  max-width: 60%;
+  height: auto;
+  margin: 1em auto;
+}
+
+.single-post article p {
+  line-height: 2em;
+  margin: 1em 0.7em;
+}
+
+.single-post article h1 {
+  font-size: 2.3rem;
+}
+
+.single-post article h2 {
+  font-size: 2.1rem;
+  position: relative;
+  margin: 1em 0;
+}
+
+.single-post article h2::after, .single-post article h3::after {
+  content: "";
+  display: block;
+  width: 2em; /* Adjust the length of the line as needed */
+  height: 4px; /* Adjust the thickness of the line as needed */
+  background-color: var(--MAIN-COLOR); /* Adjust the color of the line as needed */
+  position: absolute;
+  bottom: -20%;
+  left: 0;
+}
+
+
+.single-post article h3 {
+  position: relative;
+  font-size: 1.7rem;
+  margin: 1em 0;
+}
+
+/* Style for unordered list */
+.single-post article ul {  
+font-size: 1rem; 
+margin-left: 2em;
+padding-right: 1em;
+border-right: 4px solid var(--MAIN-COLOR);
+}
+
+/* Style for list items */
+.single-post article ul li {
+margin-bottom: 10px; 
+padding-left: 10px;
+line-height: 2em;
+}
+
+.single-post article ul li::marker {
+color: var(--MAIN-COLOR);
+font-size: 1.5rem;
+}
+
+/* Share buttons */
+
+.share {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.share-button {
+  display: inline-block;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+/* socials*/
+.bxl-facebook {
+  color: #1877F2;
+}
+.bxl-twitter {
+  color: #1DA1F2;
+}
+.bxl-youtube {
+  color: #CD201F;
+}
+.bxl-whatsapp {
+  color: #25d366
+
+  ;
+}
+.bxl-linkedin {
+  color: #CD201F;
+}
+.bxl-instagram {
+  color: #c32aa3;
+}
+
+.share-button:hover {
+  color: #fff;
+}
+
+
+/* Comments */
+.comments {
+  box-shadow: 2rem 2rem 2rem -2rem #000;
+  margin-top: 1em;
+  border-radius: 7px;
+  padding: 1em 50px;
+  font-size: 1rem;
+  min-height: 250px;
+}
+
+.comments h3 span {
+  color: var(--HEADER-FOOTER);
+}
+
+.comments ul {
+  padding: 1em;
+}
+
+.comments ul li {
+  list-style-type: none;
+}
+
+.comments ul li .comment-date {
+  padding-left: 2em;
+  font-size: 0.8rem;
+  padding-top: 0;
+  color: var(--HEADER-FOOTER);
+}
+
+.comments ul li p {
+  padding-left: 2em;
+  font-size: 1.2rem;
+}
+
+.comments ul li .reply-button {
+  margin-left: 3em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-style: italic;
+  color: var(--MAIN-COLOR);
+  transition: all 0.3s;
+}
+
+.comments ul li .reply-button:hover {
+  color: var(--HEADER-FOOTER);
+  transform: scale(1.4);
+}
+
+.comments .comment-form.reply {
+  padding-left: 3em;
+}
+
+.form-group {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.comments .comment-form input,
+.comments .comment-form textarea {
+  width: 100%;
+  border-radius: 2px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--TEXT-COLOR);
+  background: black;
+  margin: 0.7rem;
+  background: gray;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-comment {
+  background: var(--MAIN-COLOR);
+  padding: 0.2em 1em;
+}
+
+/* More posts */
+.more-posts {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 95%;
+  margin: 1em auto;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.other-posts h2 {
+  font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+}
+
+.more-posts .more-posts-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1em;
+  gap: 1em;
+}
+
+.more-posts .more-posts-container .post {
+  max-width: 350px;
+  margin: 0 auto;
+}
+/* Single post end */
 
 /* Enquiery */
 .enquiry-form {
@@ -2348,6 +2650,11 @@ align-items: center;
 .about-content {
   padding-top: 13em;
 }
+
+/* Single post page*/
+.main-content.single {
+  padding: 0.5em 2%;
+}
 }
 
 @media (max-width:765px) {
@@ -2472,6 +2779,12 @@ align-items: center;
 
 .disclaimer {
   padding: 0 1%;
+}
+
+.main-content.single img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em auto;
 }
 
 .auth-content.contact form {

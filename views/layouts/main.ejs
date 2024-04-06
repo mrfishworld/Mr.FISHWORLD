@@ -173,6 +173,25 @@
    });
 });
      </script>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  const replyButtons = document.querySelectorAll('.reply-button');
+
+  replyButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+          const commentId = this.getAttribute('data-comment-id');
+          const replyForm = document.querySelector(`.hidden[data-comment-id="${commentId}"]`);
+          
+          if (replyForm.style.display === 'none' || replyForm.style.display === '') {
+              replyForm.style.display = 'block';
+          } else {
+              replyForm.style.display = 'none';
+          }
+      });
+  });
+});
+     </script>
     
 </body>
 </html>

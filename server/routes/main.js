@@ -3,6 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const { Topic, Post } = require('../models/Post');
+const Comment = require('../models/Comment');
 const { Faq, Ans } = require('../models/Faq');
 const Shop = require('../models/Shop');
 const multer  = require('multer');
@@ -213,6 +214,97 @@ router.get('/blogs', async (req, res) => {
     res.status(500).json({ error: 'Third  server error' });
   }
   
+});
+
+
+/**
+ * GET /
+ * Post :id
+*/
+router.get('/post/:id', async (req, res) => {
+  try {
+    let slug = req.params.id;
+    const data = await Post.findById({ _id: slug });
+
+    
+    const topics = await Topic.find();
+    
+    const postId = req.params.id;
+    const comments = await Comment.find({ post: postId }).populate('comment');
+    const faqs = await Faq.find();
+
+    const locals = {
+      title: data.title,
+      description:  data.preview
+    }
+
+    /* other posts */
+    let perPage = 3;
+    let page = req.query.page || 1;
+
+    const otherPosts = await Post.aggregate([ { $sort: { createdAt: -1 } } ])
+    .skip(perPage * page - perPage)
+    .limit(perPage)
+    .exec();
+
+      // Ensure each 'post' object has a properly populated 'image' property
+      for (const post of otherPosts) {
+        if (post.image && post.image.otherPosts && post.image.contentType) {
+          post.image.otherPosts = post.image.otherPosts.toString('base64');
+        }
+      }
+
+    const count = await Post.count();
+    const nextPage = parseInt(page) + 1;
+    const hasNextPage = nextPage <= Math.ceil(count / perPage);
+
+    res.render('post', { 
+      locals,
+      topics,
+      data,
+      comments,
+      otherPosts,
+      currentRoute: `/post/${slug}`,
+      currentUser: res.locals.currentUser,
+      currentUrl: req.protocol + '://' + req.get('host') + req.originalUrl,
+      faqs,
+      nextPage: hasNextPage ? nextPage : null,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+/**
+ * POST/
+ * Commments
+*/
+router.post('/post/:id/add-comment', async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const parentCommentId = req.body.parentCommentId; // If it's a reply
+
+    // Extract the visitor's name and email from the request body
+    const { name, email } = req.body;
+
+    // Create a new Comment document
+    const comment = new Comment({
+      comment: req.body.comment,
+      author: { name, email }, // Store the visitor's name and email
+      post: postId,
+      parentId: parentCommentId, // If it's a reply, store the parent comment's _id
+    });
+
+    await comment.save();
+
+    // Redirect back to the post after the comment is added
+    res.redirect(`/post/${postId}`);
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+    res.status(500).json({ error: 'First server error' });
+  }
 });
 
 /**

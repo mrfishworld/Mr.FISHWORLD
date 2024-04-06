@@ -49,7 +49,7 @@
                                           <i class='bx bx-user'>Coach Moses</i> 
                                           <i class='bx bxs-calendar'><%= popularPost.createdAt.toDateString()%></i>
                                       </div>
-                                      <div class="read-more"><a href="posts/<%= popularPost._id %>">Read More</a><i class='bx bx-link-external'></i></div>
+                                      <div class="read-more"><a href="/post/<%= popularPost._id %>">Read More</a><i class='bx bx-link-external'></i></div>
                                   </div>
                               </div>
                           </div>
@@ -74,7 +74,7 @@
                           </p>
                           <div class="author-date">
                               <i class='bx bx-user'>Coach Moses</i> 
-                              <i class='bx bxs-calendar'>02-Jan-2024</i>
+                              <i class='bx bxs-calendar'><%= post.createdAt.toDateString()%></i>
                           </div>
                           <div class="read-more"><a href="/post/<%= post._id %>">Read More</a><i class='bx bx-link-external'></i></div>
                       </div>
@@ -99,6 +99,15 @@
       </div>
   
       <div class="blogs-side-bar">
+
+        <div class="social-media">
+            <h2>Follow us on</h2>
+            <a href="#" class="social-media-button tiktok"><i class='bx bxl-tiktok'></i> TikTok</a>
+            <a href="#" class="social-media-button twitter"><i class='bx bxl-twitter'></i> Twitter</a>
+            <a href="#" class="social-media-button linkedin"><i class='bx bxl-linkedin'></i> LinkedIn</a>
+            <a href="#" class="social-media-button facebook"><i class='bx bxl-facebook'></i> Facebook</a>
+          </div>
+
           <div class="popular-posts">
               <h2>Most popular Posts</h2>
               <% popularPosts.forEach(popularPost => { %>
@@ -118,13 +127,9 @@
           <div class="topics">
               <h2>Topics</h2>
               <div class="topic">
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
-                  <h3><a href="#">FITNESS & WELLNESS</a></h3>
+                <% topics.forEach(topic => { %>
+                  <h3><a href="#"><%= topic.name %></a></h3>
+                  <% }) %>
               </div>
           </div>
       </div>
