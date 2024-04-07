@@ -697,12 +697,14 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
     try {
         const shops = await Shop.find();
         const locals = {
-            shops: shops,
-            title: 'My Shops',
-            currentPage: 'my-shops',
-            layout: adminLayout,
+            title: 'Shop'
         };
-        res.render('Admin/my-shops', locals);
+        res.render('Admin/my-shops', { 
+        locals,
+        shops,
+        currentPage: 'my-shops',
+        layout: adminLayout,
+      });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
@@ -736,7 +738,7 @@ router.post('/edit-shop/:id', authMiddleware, upload.single('image'),  async (re
     try {
       const imageObject = {
         data: req.file.buffer,
-        contentType: req.file.mimetype
+        contentType: req.file.mimetype 
     };
 
       await Shop.findByIdAndUpdate(req.params.id, {
@@ -747,8 +749,6 @@ router.post('/edit-shop/:id', authMiddleware, upload.single('image'),  async (re
         oldPrice: req.body.oldPrice,
         image: imageObject
     });
-
-    res.redirect('/dashboard');
   
       res.redirect('/my-shops'); 
       req.flash('success', 'Shop edited');// Redirect to the latest-shops page

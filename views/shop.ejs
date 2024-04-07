@@ -14,7 +14,26 @@
                     
                     
                     <div class="owl-carousel owl-theme">
-                        <div class="item"><img src="/Img/suites.jfif" alt="">
+
+                        <% if (shops.length === 0) { %>
+                            <p>No items available at the moment.</p>
+                        <% } else { %>
+                            
+                            <% shops.forEach(function(shop) { %>
+                        <div class="item">
+                            <img src="data:<%= shop.image.contentType %>;base64,<%= shop.image.data.toString('base64') %>" alt="">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 700px;">
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><%= shop.name %></h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><%= shop.description %></p>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="tel:+256705164400">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                            <% }); %>
+                        <% } %> 
+                       <!--  <div class="item"><img src="/Img/suites.jfif" alt="">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Swim Suits</h1>
@@ -40,7 +59,7 @@
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="tel:+256705164400">Shop Now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --> -->
                     </div>
                 </div>
             </div>
@@ -80,7 +99,7 @@
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <div class="img-fluid w-100">
-                            <%- shop.img %>
+                            <img src="data:<%= shop.image.contentType %>;base64,<%= shop.image.data.toString('base64') %>" alt="">
                         </div>
                         
                         <div class="product-action">

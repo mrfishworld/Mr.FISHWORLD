@@ -1869,6 +1869,7 @@ form .input-box {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin: 5em 0 3em 0;
 }
 
@@ -2676,7 +2677,7 @@ font-size: 1.5rem;
   }
 
   .post-nav {
-    margin-top: 27em;
+    margin-top: 2em;
   }
 
   .popular-posts {

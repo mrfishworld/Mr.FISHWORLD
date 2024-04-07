@@ -274,7 +274,7 @@ router.get('/post/:id', async (req, res) => {
     console.log(error);
   }
 
-});
+}); 
 
 /**
  * POST/
@@ -312,26 +312,35 @@ router.post('/post/:id/add-comment', async (req, res) => {
  * Shop
 */
 router.get('/shop', async (req, res) => {
-
   try {
-
     const locals = {
       title: 'Shop',
       description: "SwimworldUG offers a comprehensive range of services aimed at promoting swimming in Uganda. Our offerings include professional swimming career guidance and knowledge, private swimming lessons for adults and children, school swimming events, galas, and swimming competitions. Additionally, we provide a wide selection of swimming equipment and medical swimming therapies such as fitness, weight loss, autism therapy, stroke rehabilitation, and more. Whether you're looking to enhance your swimming skills, participate in competitive events, or seek therapeutic benefits from swimming, SwimworldUG is your go-to destination for all things swimming in Uganda."
     };
 
+    // Fetch shops data
     const shops = await Shop.find();
 
-    res.render('shop', {
-      locals,
-      shops
-    }); 
+    // Convert image data to base64 for rendering
+    const shopsWithBase64Images = shops.map(shop => {
+      if (shop.image && shop.image.data && shop.image.contentType) {
+        return {
+          ...shop.toObject(),
+          image: {
+            contentType: shop.image.contentType,
+            data: shop.image.data.toString('base64')
+          }
+        };
+      } else {
+        return shop.toObject();
+      }
+    });
+
+    res.render('shop', { locals, shops: shopsWithBase64Images });
   } catch (error) {
     console.error(error);
-    // Handle error response
-    res.status(500).json({ error: 'Third  server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
-  
 });
 
 router.get('/enquiry', async (req, res) => {

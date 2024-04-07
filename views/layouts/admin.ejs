@@ -15,53 +15,7 @@
     <script type="application/javascript" src="/tinymce/tinymce.min.js"></script>
     <script type="application/javascript" src="/js/my-tinymce-config.js"></script>
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <script>
-      tinymce.init({
-        selector: '#mytextarea',
-        plugins: [
-          'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
-          'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-          'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
-        ],
-        toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-          'alignleft aligncenter alignright alignjustify | ' +
-          'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
-
-            // enable title field in the Image dialog
-                image_title: true, 
-                // enable automatic uploads of images represented by blob or data URIs
-                automatic_uploads: true,
-                // add custom filepicker only to Image dialog
-                file_picker_types: 'image',
-                file_picker_callback: function(cb, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-
-                    input.onchange = function() {
-                    var file = this.files[0];
-                    var reader = new FileReader();
-                    
-                    reader.onload = function () {
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
-
-                        // call the callback and populate the Title field with the file name
-                        cb(blobInfo.blobUri(), { title: file.name });
-                    };
-                    reader.readAsDataURL(file);
-                    };
-                    
-                    input.click();
-                }
-
-      });
-    </script>
+    <script src="https://cdn.tiny.cloud/1/0wms554o9yo2cos572uxpn2pi11a36w4ail27fxq9z634ud0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     
@@ -76,6 +30,49 @@
 
         
       </div>
-
+      <script>
+        tinymce.init({
+          selector: '#mytextarea',
+          plugins: [
+            'autolink',
+            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+          ],
+          toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+            'alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
+  
+              // enable title field in the Image dialog
+                  image_title: true, 
+                  // enable automatic uploads of images represented by blob or data URIs
+                  automatic_uploads: true,
+                  // add custom filepicker only to Image dialog
+                  file_picker_types: 'image',
+                  file_picker_callback: function(cb, value, meta) {
+                      var input = document.createElement('input');
+                      input.setAttribute('type', 'file');
+                      input.setAttribute('accept', 'image/*');
+  
+                      input.onchange = function() {
+                      var file = this.files[0];
+                      var reader = new FileReader();
+                      
+                      reader.onload = function () {
+                          var id = 'blobid' + (new Date()).getTime();
+                          var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                          var base64 = reader.result.split(',')[1];
+                          var blobInfo = blobCache.create(id, file, base64);
+                          blobCache.add(blobInfo);
+  
+                          // call the callback and populate the Title field with the file name
+                          cb(blobInfo.blobUri(), { title: file.name });
+                      };
+                      reader.readAsDataURL(file);
+                      };
+                      
+                      input.click();
+                  }
+  
+        });
+      </script>
 </body>
 </html>
