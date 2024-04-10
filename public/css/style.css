@@ -2740,6 +2740,38 @@ font-size: 1.5rem;
     font-size: 2rem;
   }
 
+  /* Admin */
+  .admin_wrapper {
+    display: flex;
+    height: calc(85.5vh);
+    flex-flow: column;
+  }
+  
+  .admin_wrapper .left-sidebar ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background: var(--MAIN-COLOR);
+    list-style-type: none;
+  }
+
+  .admin_wrapper .left-sidebar li {
+    
+  }
+  
+  .admin_wrapper .admin-content {
+    background: aliceblue;
+    padding: 40px 100px 100px;
+  }
+
+  .admin_wrapper .left-sidebar ul li a {
+    font-size:1.2rem ;
+    color: var(--HEADER-FOOTER);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-bottom: none;
+  }
+
 
 }
 
@@ -2911,6 +2943,41 @@ form button {
   padding: 40px 100px 100px;
   overflow-y: scroll;
 }
+
+/* Password Visiblity  *//* Styles for the toggle password button */
+.input-p {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.input-p input {
+}
+
+.input-p button {
+  width: 80%;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-password:focus {
+  outline: none;
+}
+
+/* Styles for the eye icon */
+.toggle-password i {
+  font-size: 1rem;
+}
+
+/* Hide the password by default */
+#passwordInput[type="password"] {
+  padding-right: 35px;
+}
+
+
 
 /* Dashboard  */
 .bottom-section.admin {

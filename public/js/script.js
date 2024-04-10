@@ -358,7 +358,16 @@ document.getElementById('close-btn').addEventListener('click', function() {
 });
 
 /* Replyfoam */
-
+const passwordInput = document.getElementById('passwordInput');
+        const togglePasswordButton = document.getElementById('togglePassword');
+    
+        togglePasswordButton.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePasswordButton.querySelector('i').classList.toggle('bx-show');
+            togglePasswordButton.querySelector('i').classList.toggle('bx-hide');
+            togglePasswordButton.querySelector('i').textContent = type === 'password' ? 'View password' : 'Hide password';
+        });
 
 
  

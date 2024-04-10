@@ -190,7 +190,7 @@ router.post('/forgot-password', async (req, res) => {
     await user.save();
 
     // Prepare encoded reset link
-    const encodedToken = encodeURIComponent(resetToken);
+    const encodedToken = encodeURIComponent(resetToken); // Encode spaces
     const resetLink = `http://${req.headers.host}/reset-password/${encodedToken}`;
 
     // Send password reset email
@@ -217,16 +217,12 @@ router.post('/forgot-password', async (req, res) => {
 });
 
 
+
 /**
  * GET
  * Reset password page
  */
 router.get('/reset-password/:token', async (req, res) => {
-
-  const locals = {
-    title: "Reset Password"
-  }
-
   try {
     const { token } = req.params;
     const user = await User.findOne({
@@ -239,16 +235,20 @@ router.get('/reset-password/:token', async (req, res) => {
       return res.redirect('/forgot-password');
     }
 
+    // Render the password reset page with necessary data
     res.render('admin/reset-password', {
-      locals,
+      locals: {
+        title: 'Reset Password'
+      },
       currentPage: 'reset-password',
-      token
+      token // Pass the token to the view
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 /**
  * POST
